@@ -4,36 +4,41 @@
   page container, so neighbouring cards bleed off both edges as in the mockup.
   Cards are 344px square on a 22px gutter.
 */
+import { Image } from 'astro:assets';
+import user1 from '../assets/users/user1.jpg';
+import user2 from '../assets/users/user2.jpg';
+import user3 from '../assets/users/user3.jpg';
+import user4 from '../assets/users/user4.jpg';
 /*
   PLACEHOLDER TESTIMONIALS — written to show the layout, not collected from real
   customers. Replace with quotes you have permission to publish before launch.
 */
+// One entry per available photo. `position` is the crop's focal point, as in the hero.
 const testimonials = [
 	{
 		quote: 'I started DigiSave with GHS20 after work one evening. By the next term, the school fees were already sitting there.',
 		name: 'Ama Mensah',
-		avatar: 'bg-[linear-gradient(150deg,#E8C4A8,#C08E6B)]',
+		avatar: user1,
+		position: '50% 32%',
 	},
 	{
 		quote: 'Eurobond Trust is where my two-year plan lives. I top up on payday and leave it to the fund managers.',
 		name: 'Kwabena Owusu',
-		avatar: 'bg-[linear-gradient(150deg,#D9B7A0,#A97B62)]',
+		avatar: user2,
+		position: '50% 32%',
 	},
 	{
 		quote: 'I requested a standard withdrawal and the money came in by 6pm the next working day. Exactly as promised.',
 		name: 'Efua Boateng',
-		avatar: 'bg-[linear-gradient(150deg,#8FB6D9,#4E7BA6)]',
-	},
-	{
-		quote: 'Topping up from Mobile Money takes less than a minute, and that is what keeps me consistent.',
-		name: 'Adjoa Sarpong',
-		avatar: 'bg-[linear-gradient(150deg,#F0D9A8,#C9A86B)]',
+		avatar: user3,
+		position: '50% 32%',
 	},
 	{
 		quote:
 			'I referred three colleagues. They are investing now, and my Achieve Points went straight back into DigiSave.',
-		name: 'Yaw Antwi',
-		avatar: 'bg-[linear-gradient(150deg,#B7C4D9,#6E7F99)]',
+		name: 'Adjoa Sarpong',
+		avatar: user4,
+		position: '50% 32%',
 	},
 ];
 ---
@@ -92,7 +97,13 @@ const testimonials = [
 					<div class="relative mt-auto">
 						<p class="text-[17px] leading-[1.45] text-ink">{t.quote}</p>
 						<div class="mt-6 flex items-center gap-3">
-							<span class:list={['size-8 shrink-0 rounded-full ring-2 ring-surface-2', t.avatar]} />
+							<Image
+								src={t.avatar}
+								alt=""
+								width={64}
+								style={`object-position:${t.position}`}
+								class="size-8 shrink-0 rounded-full object-cover ring-2 ring-surface-2"
+							/>
 							<span class="text-[15px] font-medium text-ink-soft">{t.name}</span>
 						</div>
 					</div>
