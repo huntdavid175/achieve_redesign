@@ -1,14 +1,26 @@
 ---
+import { Image } from 'astro:assets';
 import PhoneMockup from './PhoneMockup.astro';
 import StoreBadges from './StoreBadges.astro';
+import user1 from '../assets/users/user1.jpg';
+import user2 from '../assets/users/user2.jpg';
+import user3 from '../assets/users/user3.jpg';
+import user4 from '../assets/users/user4.jpg';
 
-// Placeholder avatars. Swap each `class` for <img src="/images/avatars/1.jpg" /> when
-// the real photos land — the ring/overlap wrapper stays the same.
+/*
+  Customer photos, rendered at 34px. The sources are full-resolution portraits,
+  so they go through astro:assets — `width` is 2x the display size for retina
+  and Astro emits the resized, modern-format file at build time.
+
+  `position` is the vertical focal point of each crop: these are tall portraits,
+  so a plain centre crop lands below the face. Tune per photo if a face sits
+  higher or lower in frame.
+*/
 const avatars = [
-	'bg-[linear-gradient(140deg,#9CC9E8,#6E8FB5)]',
-	'bg-[linear-gradient(140deg,#F2C7A8,#D89C77)]',
-	'bg-[linear-gradient(140deg,#C3B3E6,#8E79C4)]',
-	'bg-[linear-gradient(140deg,#B9D6B0,#7FA878)]',
+	{ src: user1, position: '50% 32%' },
+	{ src: user2, position: '50% 32%' },
+	{ src: user3, position: '50% 32%' },
+	{ src: user4, position: '50% 32%' },
 ];
 ---
 
@@ -40,10 +52,14 @@ const avatars = [
 					<div class="flex">
 						{
 							avatars.map((avatar, i) => (
-								<span
+								<Image
+									src={avatar.src}
+									alt=""
+									width={68}
+									loading="eager"
+									style={`object-position:${avatar.position}`}
 									class:list={[
-										'size-[34px] rounded-full ring-[3px] ring-surface',
-										avatar,
+										'size-[34px] rounded-full object-cover ring-[3px] ring-surface',
 										i > 0 && '-ml-2.5',
 									]}
 								/>
