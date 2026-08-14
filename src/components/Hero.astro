@@ -12,18 +12,18 @@ const avatars = [
 ];
 ---
 
-<section class="relative overflow-hidden bg-white">
+<section class="relative overflow-hidden bg-surface">
 	<!-- Faint grid, fading out below the fold line -->
 	<div
 		aria-hidden="true"
-		class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,#F1F1F1_1px,transparent_1px),linear-gradient(to_bottom,#F1F1F1_1px,transparent_1px)] [background-size:84px_84px] [mask-image:linear-gradient(to_bottom,#000_0%,#000_10%,transparent_42%)]"
+		class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,#1B2A24_1px,transparent_1px),linear-gradient(to_bottom,#1B2A24_1px,transparent_1px)] [background-size:84px_84px] [mask-image:linear-gradient(to_bottom,#000_0%,#000_10%,transparent_42%)]"
 	>
 	</div>
 
 	<!-- Soft rainbow bloom -->
 	<div
 		aria-hidden="true"
-		class="pointer-events-none absolute top-[14%] left-[-6%] h-[125%] w-[92%] blur-[70px] [background-image:radial-gradient(32%_40%_at_32%_74%,#6FE0B8_0%,transparent_72%),radial-gradient(30%_38%_at_52%_58%,#8FE8C0_0%,transparent_72%),radial-gradient(27%_33%_at_63%_36%,#C8F0A8_0%,transparent_72%),radial-gradient(30%_38%_at_79%_46%,#9BE8B0_0%,transparent_72%),radial-gradient(26%_32%_at_73%_20%,#A6E6E2_0%,transparent_72%),radial-gradient(28%_36%_at_38%_28%,#CDEFE4_0%,transparent_72%)]"
+		class="pointer-events-none absolute top-[14%] left-[-6%] h-[125%] w-[92%] blur-[70px] [background-image:radial-gradient(32%_40%_at_32%_74%,#0E7A5E_0%,transparent_72%),radial-gradient(30%_38%_at_52%_58%,#12805F_0%,transparent_72%),radial-gradient(27%_33%_at_63%_36%,#3D7024_0%,transparent_72%),radial-gradient(30%_38%_at_79%_46%,#1E6B3A_0%,transparent_72%),radial-gradient(26%_32%_at_73%_20%,#0F5F6B_0%,transparent_72%),radial-gradient(28%_36%_at_38%_28%,#0E5449_0%,transparent_72%)]"
 	>
 	</div>
 
@@ -42,7 +42,7 @@ const avatars = [
 							avatars.map((avatar, i) => (
 								<span
 									class:list={[
-										'size-[34px] rounded-full ring-[3px] ring-white',
+										'size-[34px] rounded-full ring-[3px] ring-surface',
 										avatar,
 										i > 0 && '-ml-2.5',
 									]}
@@ -107,7 +107,7 @@ const avatars = [
 	</div>
 </section>
 
-<div class="bg-white py-14 text-center">
+<div class="bg-surface py-14 text-center">
 	<p
 		class="text-gradient-brand text-[17px] font-medium"
 	>

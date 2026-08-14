@@ -38,16 +38,31 @@
 @theme {
 	--font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
 
-	--color-ink: #0a0a0b;
-	--color-ink-soft: #1b1c1e;
-	--color-muted: #56585e;
-	--color-star: #ffa51f;
-	--color-hairline: #ececec;
-
 	/* Sampled from the Achieve logo: cyan through teal to emerald. */
 	--color-brand-cyan: #14bcc4;
 	--color-brand: #14cca9;
 	--color-brand-green: #14d49d;
+
+	/*
+	 * Dark theme. Surfaces are near-black with a green cast rather than neutral
+	 * grey, so the page reads as part of the brand rather than merely unlit.
+	 * `ink` keeps its name as the primary foreground — it is now light.
+	 */
+	--color-surface: #050b09; /* page */
+	--color-surface-2: #0b1512; /* cards, inputs */
+	--color-surface-3: #12201b; /* hover / raised */
+	--color-line: #1b2a24; /* borders, dividers, rules */
+
+	--color-ink: #e8f2ee; /* primary text */
+	--color-ink-soft: #c0d4cc; /* secondary text */
+	--color-muted: #8ba59c; /* body copy */
+
+	/* Buttons: brand green with near-black text — a dark button would vanish here. */
+	--color-accent: #14cca9;
+	--color-accent-ink: #04120e;
+
+	--color-star: #ffa51f;
+	--color-hairline: #1b2a24;
 }
 
 /*
@@ -61,7 +76,13 @@
 	color: transparent;
 }
 
+body {
+	background-color: var(--color-surface);
+	color: var(--color-ink);
+}
+
 html {
+	color-scheme: dark;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
