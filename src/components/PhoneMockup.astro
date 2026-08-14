@@ -1,0 +1,28 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+{/*
+  Single hero image: hand, device and app screen are all baked in.
+  Derived from public/images/hero_withhand.png, which shipped with the
+  transparency checkerboard flattened into the pixels — hero-hand.webp is the
+  keyed version with a real alpha channel. Re-key if the source is replaced.
+
+  Below lg it sits in normal flow, capped so it cannot swamp a short screen.
+  From lg up it fills its absolutely-positioned parent; object-contain keeps the
+  aspect ratio intact, since height:100% together with a width cap would
+  otherwise stretch a replaced element.
+*/}
+<img
+	src="/images/hero-hand.webp"
+	alt="The Achieve app open on a phone, showing fixed and flexible investment balances"
+	width="1084"
+	height="1451"
+	decoding="async"
+	fetchpriority="high"
+	class={`mx-auto max-h-[68svh] w-auto max-w-[600px] select-none lg:h-full lg:max-h-none lg:w-full lg:max-w-full lg:object-contain lg:object-bottom ${className}`}
+/>

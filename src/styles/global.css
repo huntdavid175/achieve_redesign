@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+/*
+ * Satoshi (Indian Type Foundry, via Fontshare) — self-hosted from public/fonts.
+ * Free for personal and commercial use: https://www.fontshare.com/licenses/itf-ffl
+ * Only 400/500/700/900 are shipped, so stick to those weights in markup;
+ * 600 and 800 would be resolved to the nearest available face by the browser.
+ */
+@font-face {
+	font-family: 'Satoshi';
+	src: url('/fonts/satoshi-400.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Satoshi';
+	src: url('/fonts/satoshi-500.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Satoshi';
+	src: url('/fonts/satoshi-700.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Satoshi';
+	src: url('/fonts/satoshi-900.woff2') format('woff2');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@theme {
+	--font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+
+	--color-ink: #0a0a0b;
+	--color-ink-soft: #1b1c1e;
+	--color-muted: #56585e;
+	--color-star: #ffa51f;
+	--color-hairline: #ececec;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+}
+
+/*
+ * Logo marquee. Each item carries its own right margin (rather than the row
+ * using `gap`) so the strip is perfectly periodic and translating by -50%
+ * lands exactly one set along, with no seam.
+ */
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-marquee {
+	animation: marquee 42s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-marquee {
+		animation: none;
+	}
+}

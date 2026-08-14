@@ -1,0 +1,62 @@
+---
+import ControlRow from './ControlRow.astro';
+import SubscriptionsPhone from './SubscriptionsPhone.astro';
+import AnalyticsPhone from './AnalyticsPhone.astro';
+import MoneySavedPhone from './MoneySavedPhone.astro';
+
+const br = '<br class="hidden sm:inline" />';
+
+// Each pastel card is its own blend of soft radial washes, matching the mockup.
+const g1 =
+	'[background-image:radial-gradient(46%_40%_at_78%_16%,#BFE4F7_0%,transparent_72%),radial-gradient(42%_46%_at_98%_38%,#CDB8F0_0%,transparent_72%),radial-gradient(40%_34%_at_88%_92%,#F8CBA8_0%,transparent_72%),radial-gradient(44%_40%_at_10%_88%,#EBD5F2_0%,transparent_72%),radial-gradient(40%_34%_at_6%_18%,#F2F2F4_0%,transparent_72%)] bg-white';
+const g2 =
+	'[background-image:radial-gradient(44%_44%_at_6%_46%,#F6B9CE_0%,transparent_72%),radial-gradient(40%_34%_at_86%_12%,#BBD8F5_0%,transparent_72%),radial-gradient(46%_44%_at_96%_70%,#F8C98A_0%,transparent_72%),radial-gradient(38%_32%_at_16%_92%,#F3C0D6_0%,transparent_72%)] bg-white';
+const g3 =
+	'[background-image:radial-gradient(40%_36%_at_36%_8%,#CBB9F2_0%,transparent_72%),radial-gradient(40%_36%_at_88%_16%,#BFE4F7_0%,transparent_72%),radial-gradient(42%_40%_at_96%_74%,#F6E3A2_0%,transparent_72%),radial-gradient(40%_38%_at_8%_84%,#F8CBB4_0%,transparent_72%),radial-gradient(34%_30%_at_10%_20%,#F4F4F6_0%,transparent_72%)] bg-white';
+---
+
+<section id="control" class="relative bg-white py-24">
+	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
+		<p
+			class="mx-auto w-fit bg-[linear-gradient(90deg,#FF8A3D_0%,#FF5FA2_55%,#B45FE0_100%)] bg-clip-text text-center text-[16px] font-medium text-transparent"
+		>
+			Control
+		</p>
+
+		<h2
+			class="mx-auto mt-4 text-center text-[clamp(1.5rem,calc(2.411vw-1.93px),1.6875rem)] leading-[1.16] font-bold tracking-[-0.03em] text-ink"
+		>
+			Put the power in your hands
+		</h2>
+
+		<div class="mt-24 flex flex-col gap-28">
+			<ControlRow
+				title={`Get control over${br} your subscriptions`}
+				body={`Necta instantly finds and tracks your${br} subscriptions. We're there when you need${br} us to cancel services so you don't have to.`}
+				cta="Manage my subscriptions"
+				gradient={g1}
+			>
+				<SubscriptionsPhone />
+			</ControlRow>
+
+			<ControlRow
+				title={`Stay on top of your${br} everyday spending`}
+				body={`Get an effortless breakdown of your finances to see${br} where your money is going and how to improve.${br} We'll notify you of important events that need${br} your attention so you're never caught off guard.`}
+				cta="Track my spending"
+				gradient={g2}
+				reverse
+			>
+				<AnalyticsPhone />
+			</ControlRow>
+
+			<ControlRow
+				title={`Put your financial${br} goals on autopilot`}
+				body={`Turn on autopilot to save money without thinking about${br} it. It learns your habits and saves the right amount at${br} the right time while helping you avoid overdraft fees.`}
+				cta="Automate my savings"
+				gradient={g3}
+			>
+				<MoneySavedPhone />
+			</ControlRow>
+		</div>
+	</div>
+</section>

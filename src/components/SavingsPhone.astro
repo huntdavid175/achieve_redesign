@@ -1,0 +1,64 @@
+---
+/*
+  Placeholder artwork for the "Easy To Manage Your Account" card: a dark phone
+  screen with a payment card floating on an orbit ring. Built in markup rather
+  than shipped as an image so it stays crisp — swap for a real export if one
+  arrives.
+*/
+---
+
+<div class="relative aspect-[860/1864] w-full overflow-hidden rounded-[30px] bg-[#050506]">
+	<!-- orbit ring behind the card -->
+	<svg
+		viewBox="0 0 280 600"
+		preserveAspectRatio="none"
+		fill="none"
+		aria-hidden="true"
+		class="absolute inset-0 h-full w-full"
+	>
+		<ellipse
+			cx="140"
+			cy="150"
+			rx="118"
+			ry="44"
+			stroke="#ffffff"
+			stroke-width="1.6"
+			opacity="0.9"
+			transform="rotate(-19 140 150)"></ellipse>
+	</svg>
+
+	<!-- accent dots -->
+	<span class="absolute top-[9%] left-[31%] size-[6px] rounded-full bg-[#D94FA6]"></span>
+	<span class="absolute top-[21%] left-[12%] size-[6px] rounded-full bg-[#D94FA6]"></span>
+	<span class="absolute top-[19%] right-[13%] size-[6px] rounded-full bg-[#D94FA6]"></span>
+
+	<!-- the payment card -->
+	<div class="absolute top-[23%] left-1/2 w-[66%] -translate-x-1/2 -translate-y-1/2 rotate-[-19deg]">
+		<div
+			class="relative aspect-[1.586/1] rounded-[10px] bg-[linear-gradient(132deg,#F8DEC8_0%,#F3C6BE_46%,#ECA9C9_100%)] p-[7%] shadow-[0_18px_34px_-12px_rgba(0,0,0,0.55)]"
+		>
+			<!-- mastercard -->
+			<div class="flex">
+				<span class="size-[13%] aspect-square rounded-full bg-[#EB001B]"></span>
+				<span class="-ml-[5%] size-[13%] aspect-square rounded-full bg-[#F79E1B]"></span>
+			</div>
+
+			<!-- chip -->
+			<div class="absolute top-[13%] right-[7%] flex w-[14%] flex-wrap gap-[6%] opacity-90">
+				{
+					Array.from({ length: 4 }).map(() => (
+						<span class="h-[7px] w-[47%] rounded-[1.5px] bg-white/85" />
+					))
+				}
+			</div>
+
+			<div class="absolute right-[7%] bottom-[8%] left-[7%] flex items-end justify-between">
+				<span class="leading-tight text-[#2C2320]">
+					<span class="block text-[8px] font-medium italic">Shubham Gupta</span>
+					<span class="mt-[2px] block text-[7px] italic opacity-80">Exp&nbsp; 07/25</span>
+				</span>
+				<span class="text-[11px] font-bold italic text-[#2C2320]">VISA</span>
+			</div>
+		</div>
+	</div>
+</div>

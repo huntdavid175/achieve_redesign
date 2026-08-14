@@ -1,11 +1,35 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import Features from '../components/Features.astro';
+import Capabilities from '../components/Capabilities.astro';
+import Control from '../components/Control.astro';
+import MoreFeatures from '../components/MoreFeatures.astro';
+import Connect from '../components/Connect.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Faq from '../components/Faq.astro';
+import DownloadCta from '../components/DownloadCta.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Necta — Everything you need to understand your money"
+	description="Track spending, manage accounts, and grow your money with real-time insights built for modern life."
+>
+	<Navbar />
+	<main>
+		<Hero />
+		<LogoMarquee />
+		<Features />
+		<Capabilities />
+		<Control />
+		<MoreFeatures />
+		<Connect />
+		<Testimonials />
+		<Faq />
+		<DownloadCta />
+	</main>
+	<Footer />
 </Layout>

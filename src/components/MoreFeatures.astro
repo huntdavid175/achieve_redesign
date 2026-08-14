@@ -1,0 +1,68 @@
+---
+import ReadyCashPhone from './ReadyCashPhone.astro';
+import SubscriptionsPhone from './SubscriptionsPhone.astro';
+import TransactionsPhone from './TransactionsPhone.astro';
+
+// Card geometry read off the mockup: three ~362px cards on an 18px gutter fill
+// the 1120px container exactly; the device sits at 16.4%/16.3% inset, 67.3% wide.
+const card =
+	'relative aspect-square overflow-hidden rounded-[28px] bg-white';
+const device = 'absolute top-[16.3%] left-[16.4%] w-[67.3%]';
+
+const g1 =
+	'[background-image:radial-gradient(40%_36%_at_24%_8%,#CDB8F0_0%,transparent_72%),radial-gradient(42%_38%_at_92%_18%,#BFE4F7_0%,transparent_72%),radial-gradient(40%_38%_at_8%_86%,#F8CBB4_0%,transparent_72%),radial-gradient(36%_32%_at_46%_96%,#F3C0D6_0%,transparent_72%)]';
+const g2 =
+	'[background-image:radial-gradient(38%_36%_at_10%_18%,#F2F2F4_0%,transparent_72%),radial-gradient(40%_40%_at_6%_74%,#F3C0D6_0%,transparent_72%),radial-gradient(44%_42%_at_96%_82%,#F8C98A_0%,transparent_72%),radial-gradient(36%_34%_at_92%_24%,#EDDCF5_0%,transparent_72%)]';
+const g3 =
+	'[background-image:radial-gradient(42%_36%_at_58%_8%,#BFE4F7_0%,transparent_72%),radial-gradient(38%_34%_at_96%_16%,#CDB8F0_0%,transparent_72%),radial-gradient(40%_38%_at_10%_84%,#F8CBB4_0%,transparent_72%),radial-gradient(38%_34%_at_86%_92%,#F3C0D6_0%,transparent_72%)]';
+---
+
+<section class="relative bg-white py-24">
+	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
+		<p
+			class="mx-auto w-fit bg-[linear-gradient(90deg,#FF8A3D_0%,#FF5FA2_55%,#B45FE0_100%)] bg-clip-text text-center text-[16px] font-medium text-transparent"
+		>
+			More Features
+		</p>
+
+		<h2
+			class="mx-auto mt-4 text-center text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.16] font-bold tracking-[-0.03em] text-ink"
+		>
+			Everything you need,<br class="hidden sm:block" /> all in one place.
+		</h2>
+
+		<div class="mt-10 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+			<div>
+				<div class:list={[card, g1]}>
+					<div class={device}><ReadyCashPhone /></div>
+				</div>
+				<h3 class="mt-9 text-[19px] font-medium text-ink">Stay on Top of Your Loans with Ease</h3>
+				<p class="mt-3 text-[16px] leading-[1.6] text-muted">
+					Effortlessly monitor and manage<br class="hidden lg:block" /> your current loans in one place.
+				</p>
+			</div>
+
+			<div>
+				<div class:list={[card, g2]}>
+					<div class={device}><SubscriptionsPhone /></div>
+				</div>
+				<h3 class="mt-9 text-[19px] font-medium text-ink">Secure Access to Your Details</h3>
+				<p class="mt-3 text-[16px] leading-[1.6] text-muted">
+					Our platform offers a secure and easy way<br class="hidden lg:block" /> to access and manage
+					your banking details.
+				</p>
+			</div>
+
+			<div>
+				<div class:list={[card, g3]}>
+					<div class={device}><TransactionsPhone /></div>
+				</div>
+				<h3 class="mt-9 text-[19px] font-medium text-ink">Track Your Spending</h3>
+				<p class="mt-3 text-[16px] leading-[1.6] text-muted">
+					Easily track your spending and monitor your<br class="hidden lg:block" /> financial health with
+					transaction history.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

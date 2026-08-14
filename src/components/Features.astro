@@ -1,0 +1,183 @@
+---
+import SavingsPhone from './SavingsPhone.astro';
+import SendMoneyPhone from './SendMoneyPhone.astro';
+import AnalyticsPhone from './AnalyticsPhone.astro';
+import SpendingPhone from './SpendingPhone.astro';
+---
+
+<section id="features" class="relative bg-white pt-[150px] pb-24">
+	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
+		<!-- Header: eyebrow + heading on the left, supporting copy right-aligned -->
+		<div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-6">
+			<div>
+				<p
+					class="w-fit bg-[linear-gradient(90deg,#FF8A3D_0%,#FF5FA2_52%,#B45FE0_100%)] bg-clip-text text-[16px] font-medium text-transparent"
+				>
+					Features
+				</p>
+				<h2
+					class="mt-5 text-[clamp(1.625rem,2.77vw-2.21px,1.9375rem)] leading-[1.15] font-bold tracking-[-0.03em] text-ink"
+				>
+					Everything you need to<br class="hidden lg:block" /> manage your finances smarter
+				</h2>
+			</div>
+
+			<p class="text-[16px] leading-[1.6] text-muted lg:text-right">
+				We use bank-grade security and encryption to keep<br class="hidden lg:block" /> your
+				transactions and personal information protected.
+			</p>
+		</div>
+
+		<!-- Cards. Outer grid holds the three rows on the same 20px gutter. -->
+		<div class="mt-10 grid gap-5">
+		<!-- Row 1. items-stretch keeps both the same height; each clips its own artwork. -->
+		<div class="grid items-stretch gap-5 md:grid-cols-2">
+			<!-- Card 1: copy on top, device bleeding off the bottom -->
+			<article
+				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#F1F1F1] bg-[#FCFCFC] lg:min-h-[455px]"
+			>
+				<div
+					aria-hidden="true"
+					class="pointer-events-none absolute inset-0 [background-image:radial-gradient(38%_30%_at_18%_86%,#F7C6DE_0%,transparent_70%),radial-gradient(34%_26%_at_88%_62%,#D9C9F2_0%,transparent_70%),radial-gradient(30%_24%_at_78%_92%,#F6D8C2_0%,transparent_70%)] opacity-70 blur-[26px]"
+				>
+				</div>
+
+				<div class="relative px-8 pt-12 lg:px-[24.5%]">
+					<h3 class="text-[20px] font-medium text-ink">Easy To Manage Your Account</h3>
+					<p class="mt-4 text-[16px] leading-[1.56] text-muted">
+						Set savings goals and let the<br class="hidden lg:block" /> system move money automatically.
+					</p>
+				</div>
+
+				<!-- device is absolute, so it bleeds past the card's bottom edge and gets clipped -->
+				<div class="relative mt-10 min-h-[275px] flex-1">
+					<div class="absolute inset-x-8 top-0 lg:inset-x-[24.5%]">
+						<SavingsPhone />
+					</div>
+				</div>
+			</article>
+
+			<!-- Card 2: device bleeding off the top, copy underneath -->
+			<article
+				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#F1F1F1] bg-[#FCFCFC] lg:min-h-[455px]"
+			>
+				<div
+					aria-hidden="true"
+					class="pointer-events-none absolute inset-0 [background-image:radial-gradient(34%_28%_at_12%_38%,#F7C6DE_0%,transparent_70%),radial-gradient(36%_30%_at_92%_28%,#CFE0F5_0%,transparent_70%),radial-gradient(32%_26%_at_16%_88%,#F6D8C2_0%,transparent_70%),radial-gradient(30%_26%_at_86%_82%,#D9C9F2_0%,transparent_70%)] opacity-70 blur-[26px]"
+				>
+				</div>
+
+				<!--
+					Device anchored to the bottom of a short box, so its top is cropped away.
+					305px shows the bottom 50.2% of the screenshot, which starts just above
+					"Pay and Receive" — matching the mockup.
+				-->
+				<div class="relative h-[305px]">
+					<div class="absolute inset-x-8 bottom-0 lg:inset-x-[24.5%]">
+						<div class="overflow-hidden rounded-[30px] bg-[#050506]">
+							<img
+								src="/images/hero_image.avif"
+								alt="Pay and Receive shortcuts and recent activity in the app"
+								width="860"
+								height="1864"
+								loading="lazy"
+								decoding="async"
+								class="block w-full"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div class="relative mt-auto px-8 pt-8 pb-8 lg:px-[24.5%]">
+					<h3 class="text-[20px] font-medium text-ink">Smart Budgeting Tools</h3>
+					<p class="mt-4 text-[16px] leading-[1.56] text-muted">
+						Set budgets, get alerts,<br class="hidden lg:block" /> and forecast expenses.
+					</p>
+				</div>
+			</article>
+		</div>
+
+		<!-- Row 2: full-width card, device on the left bleeding off the bottom -->
+		<article
+			class="relative overflow-hidden rounded-[28px] border border-[#F1F1F1] bg-[#FCFCFC] lg:min-h-[417px]"
+		>
+			<div
+				aria-hidden="true"
+				class="pointer-events-none absolute inset-0 [background-image:radial-gradient(22%_34%_at_10%_78%,#F7C6DE_0%,transparent_70%),radial-gradient(20%_30%_at_40%_46%,#D9C9F2_0%,transparent_70%),radial-gradient(18%_28%_at_33%_88%,#F6D8C2_0%,transparent_70%)] opacity-70 blur-[26px]"
+			>
+			</div>
+
+			<div class="relative grid gap-8 lg:grid-cols-2 lg:gap-0">
+				<div class="relative min-h-[300px] px-8 pt-10 lg:min-h-0 lg:px-0 lg:pt-0">
+					<div class="lg:absolute lg:top-[50px] lg:left-[20.4%] lg:w-[48.4%]">
+						<SendMoneyPhone />
+					</div>
+				</div>
+
+				<!-- copy sits vertically centred against the card -->
+				<div class="flex flex-col justify-center px-8 pb-10 lg:px-0 lg:py-16">
+					<h3 class="text-[20px] font-medium text-ink">Transfer Money Instantly, Anytime</h3>
+					<p class="mt-4 max-w-[420px] text-[16px] leading-[1.56] text-muted">
+						Send funds locally or globally within seconds using our<br
+							class="hidden lg:block"
+						/> secure and fast money transfer system 24/7, no delays.
+					</p>
+				</div>
+			</div>
+		</article>
+
+		<!-- Row 3: same alternating pair as row 1 -->
+		<div class="grid items-stretch gap-5 md:grid-cols-2">
+			<!-- Copy on top, Analytics device bleeding off the bottom -->
+			<article
+				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#F1F1F1] bg-[#FCFCFC] lg:min-h-[455px]"
+			>
+				<div
+					aria-hidden="true"
+					class="pointer-events-none absolute inset-0 [background-image:radial-gradient(36%_28%_at_14%_84%,#F7C6DE_0%,transparent_70%),radial-gradient(34%_26%_at_90%_58%,#CFE0F5_0%,transparent_70%),radial-gradient(30%_24%_at_82%_94%,#D9C9F2_0%,transparent_70%)] opacity-70 blur-[26px]"
+				>
+				</div>
+
+				<div class="relative px-8 pt-12 lg:px-[24.5%]">
+					<h3 class="text-[20px] font-medium text-ink">Secure Your Financial Future</h3>
+					<p class="mt-4 text-[16px] leading-[1.56] text-muted">
+						Personalize solutions based on your<br class="hidden lg:block" /> goals — retirement,
+						savings, or growth.
+					</p>
+				</div>
+
+				<div class="relative mt-7 min-h-[275px] flex-1">
+					<div class="absolute inset-x-8 top-0 lg:inset-x-[24.5%]">
+						<AnalyticsPhone />
+					</div>
+				</div>
+			</article>
+
+			<!-- Spending device bleeding off the top, copy underneath -->
+			<article
+				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#F1F1F1] bg-[#FCFCFC] lg:min-h-[455px]"
+			>
+				<div
+					aria-hidden="true"
+					class="pointer-events-none absolute inset-0 [background-image:radial-gradient(34%_28%_at_10%_34%,#CFE0F5_0%,transparent_70%),radial-gradient(34%_30%_at_92%_24%,#D9C9F2_0%,transparent_70%),radial-gradient(30%_26%_at_18%_86%,#F7C6DE_0%,transparent_70%),radial-gradient(28%_24%_at_88%_86%,#F6D8C2_0%,transparent_70%)] opacity-70 blur-[26px]"
+				>
+				</div>
+
+				<div class="relative h-[287px]">
+					<div class="absolute inset-x-8 bottom-0 lg:inset-x-[24.5%]">
+						<SpendingPhone />
+					</div>
+				</div>
+
+				<div class="relative mt-auto px-8 pt-8 pb-8 lg:px-[24.5%]">
+					<h3 class="text-[20px] font-medium text-ink">Invest Smarter, Grow Faster</h3>
+					<p class="mt-4 text-[16px] leading-[1.56] text-muted">
+						Make data-backed investment<br class="hidden lg:block" /> decisions, watch your portfolio
+						grow.
+					</p>
+				</div>
+			</article>
+		</div>
+		</div>
+	</div>
+</section>

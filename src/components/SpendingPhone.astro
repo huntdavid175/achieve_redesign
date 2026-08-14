@@ -1,0 +1,58 @@
+---
+/*
+  Placeholder artwork for "Invest Smarter, Grow Faster" — the weekly spend
+  breakdown, bleeding off the top of its card so only the lower half shows.
+*/
+const rows = [
+	{ label: 'Food', amount: '-$3,456.78', dot: 'bg-[#34D3A0]' },
+	{ label: 'Transport', amount: '-$4,530.45', dot: 'bg-[#A78BFA]' },
+	{ label: 'Electricity', amount: '-$4,369.09', dot: 'bg-[#FCD34D]' },
+	{ label: 'Entertainment', amount: '-$4,369.09', dot: 'bg-[#FB923C]' },
+];
+---
+
+<div
+	class="relative flex aspect-[860/1864] w-full flex-col justify-end overflow-hidden rounded-[30px] bg-[#050506]"
+>
+	<!-- tail of the chart above; mostly cropped by the card edge -->
+	<div class="absolute inset-x-0 top-0 h-[46%]">
+		<div
+			class="absolute -top-[18%] left-1/2 size-[62%] -translate-x-1/2 rounded-full bg-[linear-gradient(160deg,#E9B6D8,#D98CC0)]"
+		>
+		</div>
+		<div class="absolute top-[52%] left-5 flex flex-col gap-[26px]">
+			<span class="text-[10px] text-white/40">26</span>
+			<span class="text-[10px] text-white/40">27</span>
+		</div>
+	</div>
+
+	<div class="relative px-5 pb-7">
+		<div class="flex items-start justify-between">
+			<div>
+				<p class="text-[14px] text-white/55">This Week Transaction</p>
+				<p class="mt-1 text-[19px] font-bold tracking-tight text-white">
+					$16,725<span class="text-[13px] font-bold">.42</span>
+				</p>
+			</div>
+			<span class="flex size-[30px] shrink-0 items-center justify-center rounded-full bg-[#1B1B1E]">
+				<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" class="size-[13px]">
+					<path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</span>
+		</div>
+
+		<div class="mt-4 flex flex-col gap-3">
+			{
+				rows.map((r) => (
+					<div class="flex items-center justify-between">
+						<span class="flex items-center gap-2.5">
+							<span class:list={['size-[9px] rounded-full', r.dot]} />
+							<span class="text-[14px] text-white/90">{r.label}</span>
+						</span>
+						<span class="text-[14px] font-medium text-white">{r.amount}</span>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>

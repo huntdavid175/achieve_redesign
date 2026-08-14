@@ -1,0 +1,52 @@
+---
+/*
+  Placeholder artwork for the Analytics screen. Used twice: clipped at the
+  bottom inside a Features card, and shown more fully in the Control section.
+*/
+const axis = ['21', '22', '23', '24', '25', '26', '27'];
+---
+
+<div class="relative aspect-[860/1864] w-full overflow-hidden rounded-[26px] bg-[#08090A]">
+	<div class="flex items-center px-5 pt-6">
+		<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" class="size-[15px]">
+			<path d="M14 5.5 7.5 12l6.5 6.5" stroke-linecap="round" stroke-linejoin="round"></path>
+		</svg>
+		<span class="flex-1 text-center text-[15px] font-bold text-white">Analytics</span>
+		<span class="size-[15px]"></span>
+	</div>
+
+	<p class="mt-5 px-5 text-[11px] text-white/55">20 November</p>
+
+	<div class="relative mt-2">
+		<div class="absolute top-2 left-5 z-10 flex flex-col gap-[26px]">
+			{axis.map((n) => <span class="text-[11px] text-white/40">{n}</span>)}
+		</div>
+
+		<svg viewBox="0 0 280 330" fill="none" aria-hidden="true" class="w-full">
+			<defs>
+				<linearGradient id="ana-arc" x1="100" y1="150" x2="210" y2="290" gradientUnits="userSpaceOnUse">
+					<stop offset="0" stop-color="#F0C3C6"></stop>
+					<stop offset="1" stop-color="#E3A7BC"></stop>
+				</linearGradient>
+			</defs>
+
+			<circle cx="164" cy="212" r="104" stroke="#fff" stroke-width="1" opacity="0.06"></circle>
+			<circle cx="164" cy="212" r="72" stroke="#fff" stroke-width="1" opacity="0.06"></circle>
+			<circle cx="164" cy="212" r="22" stroke="#fff" stroke-width="1" opacity="0.10"></circle>
+
+			<!-- thick crescent opening to the right -->
+			<path
+				d="M191.5 164.4A55 55 0 1 0 191.5 259.6"
+				stroke="url(#ana-arc)"
+				stroke-width="42"
+				stroke-linecap="round"></path>
+
+			<!-- trend arcs -->
+			<path d="M64 150a116 116 0 0 1 196-14" stroke="#5FD3A6" stroke-width="4" stroke-linecap="round"></path>
+			<path d="M56 178a128 128 0 0 1 218-8" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"></path>
+			<path d="M150 158a62 62 0 0 1 62 6" stroke="#F5A623" stroke-width="4" stroke-linecap="round"></path>
+		</svg>
+	</div>
+
+	<p class="mt-2 px-5 text-[14px] text-white/70">This Week Transaction</p>
+</div>

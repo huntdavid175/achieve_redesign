@@ -1,0 +1,102 @@
+---
+import Logo from './Logo.astro';
+
+const links = [
+	{ label: 'Features', href: '#features' },
+	{ label: 'Benefits', href: '#benefits' },
+	{ label: 'Control', href: '#control' },
+	{ label: 'Pricing', href: '#pricing' },
+	{ label: 'Blog', href: '#blog' },
+	{ label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="relative z-50">
+	<nav class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
+		<a href="/" class="flex items-center gap-2.5">
+			<Logo class="size-8" />
+			<span class="text-[22px] font-bold tracking-[-0.02em] text-ink">Necta</span>
+		</a>
+
+		<ul class="hidden items-center gap-7 lg:flex">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class="text-[15px] font-medium text-ink-soft transition hover:text-ink/60"
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<a
+			href="#"
+			class="hidden items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-[14px] font-bold text-white transition hover:bg-ink/85 lg:inline-flex"
+		>
+			Get the app
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.6"
+				aria-hidden="true"
+				class="size-4"
+			>
+				<circle cx="12" cy="12" r="9.5"></circle>
+				<path d="M12 7.5v9m0 0 3.2-3.2M12 16.5l-3.2-3.2" stroke-linecap="round" stroke-linejoin="round"
+				></path>
+			</svg>
+		</a>
+
+		<button
+			type="button"
+			data-menu-toggle
+			aria-label="Open menu"
+			aria-expanded="false"
+			class="inline-flex size-10 items-center justify-center rounded-full text-ink lg:hidden"
+		>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-6">
+				<path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"></path>
+			</svg>
+		</button>
+	</nav>
+
+	<div
+		data-menu-panel
+		hidden
+		class="mx-6 rounded-2xl border border-hairline bg-white/95 p-5 shadow-lg backdrop-blur lg:hidden"
+	>
+		<ul class="flex flex-col gap-4">
+			{
+				links.map((link) => (
+					<li>
+						<a href={link.href} class="text-[16px] font-medium text-ink-soft">
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+		<a
+			href="#"
+			class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-bold text-white"
+		>
+			Get the app
+		</a>
+	</div>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+	const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+
+	toggle?.addEventListener('click', () => {
+		const open = toggle.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', String(!open));
+		if (panel) panel.hidden = open;
+	});
+</script>

@@ -1,0 +1,94 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	icon: 'expense' | 'insights' | 'accounts' | 'secure' | 'budget' | 'alerts';
+	class?: string;
+}
+
+const { title, body, icon, class: className = '' } = Astro.props;
+---
+
+<div
+	class={`relative overflow-hidden rounded-[20px] bg-[linear-gradient(150deg,#FFFFFF_0%,#FDFCFE_55%,#F7F5FB_100%)] px-5 pt-6 pb-5 shadow-[0_6px_28px_-14px_rgba(90,70,130,0.18)] ring-1 ring-white lg:h-[189px] ${className}`}
+>
+	<!-- soft pastel bleed, matching the frosted look of the mockup -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 [background-image:radial-gradient(40%_44%_at_6%_6%,#EFE6F8_0%,transparent_70%),radial-gradient(44%_46%_at_96%_92%,#FBE6EF_0%,transparent_70%)] opacity-80 blur-[18px]"
+	>
+	</div>
+
+	<div class="relative">
+		<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-[29px] text-[#141416]">
+			{
+				icon === 'expense' && (
+					<Fragment>
+						<rect x="2.2" y="5" width="16.6" height="11.4" rx="2.6" fill="currentColor" />
+						<rect x="2.2" y="8.4" width="16.6" height="2.2" fill="#fff" opacity=".9" />
+						<circle cx="17.4" cy="17.4" r="4.1" fill="currentColor" stroke="#fff" stroke-width="1.5" />
+						<path d="m20.2 20.2 2.1 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+					</Fragment>
+				)
+			}
+			{
+				icon === 'insights' && (
+					<Fragment>
+						<circle cx="12" cy="12" r="9.6" fill="currentColor" />
+						<path
+							d="M12 5.4a6.6 6.6 0 0 1 0 13.2 4.4 4.4 0 0 0 0-13.2Z"
+							fill="#fff"
+							opacity=".92"
+						/>
+					</Fragment>
+				)
+			}
+			{
+				icon === 'accounts' && (
+					<Fragment>
+						<circle cx="7.2" cy="7.2" r="4.4" fill="currentColor" />
+						<rect x="13.2" y="2.8" width="8.8" height="8.8" rx="2.2" fill="currentColor" />
+						<rect x="2.8" y="13.2" width="8.8" height="8.8" rx="2.2" fill="currentColor" />
+						<circle cx="17.6" cy="17.6" r="4.4" fill="currentColor" />
+					</Fragment>
+				)
+			}
+			{
+				icon === 'secure' && (
+					<Fragment>
+						<path d="M12 1.9 3.6 5.2v6.4c0 5.2 3.5 9.4 8.4 10.5 4.9-1.1 8.4-5.3 8.4-10.5V5.2L12 1.9Z" fill="currentColor" />
+						<g stroke="#fff" stroke-width="1.2" opacity=".95">
+							<circle cx="12" cy="11.4" r="4.4" />
+							<path d="M7.6 11.4h8.8M12 7c1.6 1.9 1.6 6.9 0 8.8M12 7c-1.6 1.9-1.6 6.9 0 8.8" />
+						</g>
+					</Fragment>
+				)
+			}
+			{
+				icon === 'budget' && (
+					<Fragment>
+						<rect x="3.2" y="2.6" width="17.6" height="18.8" rx="4.4" fill="currentColor" />
+						<g stroke="#fff" stroke-width="1.4" stroke-linecap="round">
+							<path d="M9.4 7.2v9.6M14.6 7.2v9.6" />
+						</g>
+						<circle cx="9.4" cy="10.4" r="1.9" fill="#fff" />
+						<circle cx="14.6" cy="14" r="1.9" fill="#fff" />
+					</Fragment>
+				)
+			}
+			{
+				icon === 'alerts' && (
+					<Fragment>
+						<path d="M2.4 9.6v4.8a1.7 1.7 0 0 0 1.7 1.7h2.3l6.5 4.3V3.6L6.4 7.9H4.1a1.7 1.7 0 0 0-1.7 1.7Z" fill="currentColor" />
+						<g stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+							<path d="M17 9a4.4 4.4 0 0 1 0 6M19.8 6.4a8.2 8.2 0 0 1 0 11.2" />
+						</g>
+					</Fragment>
+				)
+			}
+		</svg>
+
+		<h3 class="mt-6 text-[17px] font-medium tracking-[-0.01em] text-ink">{title}</h3>
+		<p class="mt-3 text-[15px] leading-[1.5] text-muted" set:html={body} />
+	</div>
+</div>

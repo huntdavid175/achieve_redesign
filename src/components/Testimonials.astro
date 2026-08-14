@@ -1,0 +1,210 @@
+---
+/*
+  Full-bleed carousel: the track spans the viewport while the header stays in the
+  page container, so neighbouring cards bleed off both edges as in the mockup.
+  Cards are 344px square on a 22px gutter.
+*/
+const testimonials = [
+	{
+		quote: '"Automatic sync with my accounts makes money management effortless."',
+		name: 'Sarah Harder',
+		avatar: 'bg-[linear-gradient(150deg,#E8C4A8,#C08E6B)]',
+	},
+	{
+		quote: 'Reaching my savings goals has never been easier thanks to Necta.',
+		name: 'Emily David',
+		avatar: 'bg-[linear-gradient(150deg,#D9B7A0,#A97B62)]',
+	},
+	{
+		quote: 'Necta caught fraudulent charges on my accounts that I never would have noticed.',
+		name: 'Brandon John',
+		avatar: 'bg-[linear-gradient(150deg,#8FB6D9,#4E7BA6)]',
+	},
+	{
+		quote: '"This is the only finance app that actually makes sense for my busy lifestyle."',
+		name: 'Jessica Recker',
+		avatar: 'bg-[linear-gradient(150deg,#F0D9A8,#C9A86B)]',
+	},
+	{
+		quote:
+			'Knowing my credit score and how to improve it has been a game changer thanks to Necta.',
+		name: 'Chris Peter',
+		avatar: 'bg-[linear-gradient(150deg,#B7C4D9,#6E7F99)]',
+	},
+];
+---
+
+<section class="relative overflow-hidden bg-white py-24">
+	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
+		<p
+			class="mx-auto w-fit bg-[linear-gradient(90deg,#FF8A3D_0%,#FF5FA2_55%,#B45FE0_100%)] bg-clip-text text-center text-[16px] font-medium text-transparent"
+		>
+			What people are saying
+		</p>
+		<h2
+			class="mx-auto mt-3 text-center text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.16] font-bold tracking-[-0.03em] text-ink"
+		>
+			Loved by thousands of users
+		</h2>
+	</div>
+
+	<!--
+		Full-bleed track, rendered as three identical sets. The scroll parks in the
+		middle set and is rewound by exactly one set width whenever it drifts out,
+		so there is always a set of runway in both directions and the seam never
+		shows. Three sets (not two) so the loop still works on displays wider than
+		a single set.
+
+		Note: no `scroll-smooth` class here on purpose — it would animate the
+		rewind, making the jump visible. scrollBy() opts into smooth per call.
+	-->
+	<div
+		data-testimonial-track
+		class="mt-10 flex snap-x snap-mandatory gap-[22px] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+	>
+		{
+			[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
+				<article
+					aria-hidden={i >= testimonials.length ? 'true' : undefined}
+					class="relative flex w-[344px] shrink-0 snap-start flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(165deg,#FDFDFD_0%,#FAFAFB_50%,#F6F4F7_100%)] px-9 pt-[60px] pb-[53px] ring-1 ring-[#F2F2F4]"
+					style="height:344px"
+				>
+					<div
+						aria-hidden="true"
+						class="pointer-events-none absolute inset-0 [background-image:radial-gradient(40%_30%_at_12%_96%,#F8CDDF_0%,transparent_70%),radial-gradient(38%_28%_at_84%_98%,#F9E0B8_0%,transparent_70%),radial-gradient(34%_26%_at_50%_104%,#EBD9F5_0%,transparent_70%)] opacity-80 blur-[22px]"
+					/>
+
+					<div class="relative flex gap-[5px]">
+						{Array.from({ length: 5 }).map(() => (
+							<svg viewBox="0 0 24 24" fill="currentColor" class="size-[18px] text-star">
+								<path d="m12 1.9 3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3L7 14.1l-5-4.9 6.9-1L12 1.9Z" />
+							</svg>
+						))}
+					</div>
+
+					{/* mt-auto bottom-aligns the quote so every card's last line sits level */}
+					<div class="relative mt-auto">
+						<p class="text-[17px] leading-[1.45] text-ink">{t.quote}</p>
+						<div class="mt-6 flex items-center gap-3">
+							<span class:list={['size-8 shrink-0 rounded-full ring-2 ring-white', t.avatar]} />
+							<span class="text-[15px] font-medium text-ink-soft">{t.name}</span>
+						</div>
+					</div>
+				</article>
+			))
+		}
+	</div>
+
+	<div class="mt-8 flex items-center justify-center gap-2">
+		<button
+			type="button"
+			data-testimonial-prev
+			aria-label="Previous testimonial"
+			class="flex size-8 items-center justify-center rounded-full bg-ink text-white transition hover:bg-ink/85"
+		>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-[13px]">
+				<path d="M14 5.5 7.5 12l6.5 6.5" stroke-linecap="round" stroke-linejoin="round"></path>
+			</svg>
+		</button>
+		<button
+			type="button"
+			data-testimonial-next
+			aria-label="Next testimonial"
+			class="flex size-8 items-center justify-center rounded-full bg-ink text-white transition hover:bg-ink/85"
+		>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="size-[13px]">
+				<path d="m10 5.5 6.5 6.5-6.5 6.5" stroke-linecap="round" stroke-linejoin="round"></path>
+			</svg>
+		</button>
+	</div>
+</section>
+
+<script>
+	const AUTOPLAY_MS = 1000;
+
+	const track = document.querySelector<HTMLElement>('[data-testimonial-track]');
+	const prev = document.querySelector<HTMLButtonElement>('[data-testimonial-prev]');
+	const next = document.querySelector<HTMLButtonElement>('[data-testimonial-next]');
+
+	if (track && prev && next) {
+		// measured from the DOM so it survives any width change
+		const step = () => {
+			const cards = track.querySelectorAll<HTMLElement>('article');
+			return cards.length > 1
+				? cards[1].offsetLeft - cards[0].offsetLeft
+				: (cards[0]?.offsetWidth ?? 0);
+		};
+		// the list is rendered as three identical sets
+		const SETS = 3;
+		const setWidth = () => track.scrollWidth / SETS;
+
+		// instant, un-animated position change
+		const jumpTo = (x: number) => {
+			const prevBehavior = track.style.scrollBehavior;
+			track.style.scrollBehavior = 'auto';
+			track.scrollLeft = x;
+			track.style.scrollBehavior = prevBehavior;
+		};
+
+		/*
+		 * Keep the scroll inside the FIRST set, i.e. [0, w).
+		 *
+		 * Rewinding at 2*w instead looks natural but is unreachable: max scrollLeft
+		 * is 3*w - clientWidth, so on a 1920px display that is 3570 against a 3660
+		 * threshold. The scroll then parks at the end and everything jams. Rewinding
+		 * at w only ever needs to reach w + step, which fits at any real width.
+		 */
+		const normalize = () => {
+			const w = setWidth();
+			if (w > 0 && track.scrollLeft >= w) jumpTo(track.scrollLeft - w);
+		};
+
+		const go = (dir: number) => {
+			const s = step();
+			// stepping back off the start: hop forward a set first, then scroll back
+			if (dir < 0 && track.scrollLeft < s) jumpTo(track.scrollLeft + setWidth());
+			track.scrollBy({ left: dir * s, behavior: 'smooth' });
+		};
+
+		let settle: number;
+		track.addEventListener('scroll', () => {
+			clearTimeout(settle);
+			settle = window.setTimeout(normalize, 120);
+		});
+		window.addEventListener('resize', normalize);
+
+		const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+		let timer: number | undefined;
+		const stop = () => {
+			if (timer) window.clearInterval(timer);
+			timer = undefined;
+		};
+		const start = () => {
+			stop();
+			if (reduced.matches) return;
+			timer = window.setInterval(() => go(1), AUTOPLAY_MS);
+		};
+
+		// a manual nudge restarts the clock rather than fighting it
+		prev.addEventListener('click', () => {
+			go(-1);
+			start();
+		});
+		next.addEventListener('click', () => {
+			go(1);
+			start();
+		});
+
+		// hold still while the reader is engaged, or the tab is in the background
+		track.addEventListener('pointerenter', stop);
+		track.addEventListener('pointerleave', start);
+		track.addEventListener('focusin', stop);
+		track.addEventListener('focusout', start);
+		document.addEventListener('visibilitychange', () =>
+			document.hidden ? stop() : start()
+		);
+		reduced.addEventListener('change', start);
+
+		start();
+	}
+</script>

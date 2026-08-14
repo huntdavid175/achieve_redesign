@@ -1,0 +1,43 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	cta: string;
+	/** Tailwind arbitrary background-image for the pastel card behind the device */
+	gradient: string;
+	/** true puts the device on the right and the copy on the left */
+	reverse?: boolean;
+}
+
+const { title, body, cta, gradient, reverse = false } = Astro.props;
+---
+
+<div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-[77px]">
+	<!--
+		Pastel card. The device sits at 19.5% from its left edge at 60% of its
+		width, and runs off the bottom — the card clips it.
+	-->
+	<div class:list={[reverse && 'lg:order-2']}>
+		<div
+			class:list={['relative aspect-square overflow-hidden rounded-[32px]', gradient]}
+		>
+			<div class="absolute top-[15%] left-[19.5%] w-[60%]">
+				<slot />
+			</div>
+		</div>
+	</div>
+
+	<div class:list={[reverse && 'lg:order-1']}>
+		<h3
+			class="text-[clamp(1.5rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.18] font-bold tracking-[-0.03em] text-ink"
+			set:html={title}
+		/>
+		<p class="mt-5 text-[16px] leading-[1.6] text-muted" set:html={body} />
+		<a
+			href="#"
+			class="mt-8 inline-flex items-center rounded-[12px] bg-ink px-5 py-2.5 text-[15px] font-bold text-white transition hover:bg-ink/85"
+		>
+			{cta}
+		</a>
+	</div>
+</div>

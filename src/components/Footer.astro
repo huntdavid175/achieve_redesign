@@ -1,0 +1,159 @@
+---
+import Logo from './Logo.astro';
+import StoreBadges from './StoreBadges.astro';
+
+const columns = [
+	{
+		heading: 'Product',
+		links: [
+			{ label: 'Features', href: '#features' },
+			{ label: 'Benefits', href: '#benefits' },
+			{ label: 'Control', href: '#control' },
+			{ label: 'Connect', href: '#connect' },
+		],
+	},
+	{
+		heading: 'More',
+		links: [
+			{ label: 'Pricing', href: '#pricing' },
+			{ label: 'Reviews', href: '#reviews' },
+			{ label: 'Questions', href: '#faq' },
+			{ label: 'Blog', href: '#blog' },
+		],
+	},
+	{
+		heading: 'Company',
+		links: [
+			{ label: 'Contact', href: '#contact' },
+			{ label: 'Privacy', href: '#privacy' },
+			{ label: 'Terms', href: '#terms' },
+		],
+	},
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="relative bg-white pt-16 pb-20">
+	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
+		<!-- newsletter -->
+		<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+			<div>
+				<p class="text-[19px] font-bold tracking-[-0.02em] text-ink">Stay in the loop</p>
+				<p class="mt-2 text-[16px] text-muted">
+					Subscribe to our newsletter for the latest news and updates!
+				</p>
+			</div>
+
+			<form class="flex shrink-0 items-center gap-[10px]">
+				<label class="sr-only" for="newsletter-email">Email address</label>
+				<input
+					id="newsletter-email"
+					type="email"
+					name="email"
+					required
+					placeholder="name@email.com"
+					class="h-[35px] w-[241px] rounded-full bg-[#F5F5F6] px-5 text-[16px] text-ink placeholder:text-[#8A8A90] focus:ring-2 focus:ring-ink/15 focus:outline-none"
+				/>
+				<button
+					type="submit"
+					class="h-[35px] w-[104px] shrink-0 rounded-full bg-ink text-[15px] font-bold text-white transition hover:bg-ink/85"
+				>
+					Subscribe
+				</button>
+			</form>
+		</div>
+
+		<hr class="my-14 border-0 border-t border-[#EDEDED]" />
+
+		<!-- brand + link columns -->
+		<div class="flex flex-col gap-12 lg:flex-row lg:justify-between">
+			<div>
+				<a href="/" class="flex items-center gap-2.5">
+					<Logo class="size-[25px]" />
+					<span class="text-[20px] font-bold tracking-[-0.02em] text-ink">Necta</span>
+				</a>
+
+				<p class="mt-6 max-w-[360px] text-[16px] leading-[1.6] text-muted">
+					Track spending, manage accounts, and grow your money with real-time insights built for
+					modern life.
+				</p>
+
+				<div class="mt-10 flex items-center gap-3">
+					<a
+						href="#"
+						aria-label="Necta on Facebook"
+						class="flex size-[34px] items-center justify-center rounded-full bg-[#F7F7F8] text-ink transition hover:bg-[#EFEFF1]"
+					>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-4">
+							<circle cx="12" cy="12" r="9.6"></circle>
+							<path d="M14.4 8.2h-1.2a1.6 1.6 0 0 0-1.6 1.6v1.6m-1.4 0h4" stroke-linecap="round"
+							></path>
+							<path d="M12.8 11.4v5.4" stroke-linecap="round"></path>
+						</svg>
+					</a>
+					<a
+						href="#"
+						aria-label="Necta on X"
+						class="flex size-[34px] items-center justify-center rounded-full bg-[#F7F7F8] text-ink transition hover:bg-[#EFEFF1]"
+					>
+						<svg viewBox="0 0 24 24" fill="currentColor" class="size-[15px]">
+							<path
+								d="M17.2 3h3.3l-7.2 8.2L21.8 21h-6.6l-5.2-6.4L4.2 21H.9l7.7-8.8L.5 3h6.8l4.7 5.9L17.2 3Zm-1.2 16h1.8L6.1 4.8H4.2L16 19Z"
+							></path>
+						</svg>
+					</a>
+					<a
+						href="#"
+						aria-label="Necta on Instagram"
+						class="flex size-[34px] items-center justify-center rounded-full bg-[#F7F7F8] text-ink transition hover:bg-[#EFEFF1]"
+					>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-4">
+							<rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"></rect>
+							<circle cx="12" cy="12" r="4"></circle>
+							<circle cx="16.9" cy="7.1" r="1.1" fill="currentColor" stroke="none"></circle>
+						</svg>
+					</a>
+					<a
+						href="#contact"
+						class="flex h-[34px] items-center rounded-full bg-[#F7F7F8] px-5 text-[15px] font-medium text-ink transition hover:bg-[#EFEFF1]"
+					>
+						Contact
+					</a>
+				</div>
+			</div>
+
+			<nav class="flex gap-16 sm:gap-20">
+				{
+					columns.map((col) => (
+						<div>
+							<p class="text-[16px] font-medium text-ink">{col.heading}</p>
+							<ul class="mt-6 flex flex-col gap-[14px]">
+								{col.links.map((link) => (
+									<li>
+										<a href={link.href} class="text-[16px] text-muted transition hover:text-ink">
+											{link.label}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</nav>
+		</div>
+
+		<hr class="my-14 border-0 border-t border-[#EDEDED]" />
+
+		<!-- legal + badges -->
+		<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+			<div>
+				<p class="text-[16px] text-muted">Necta &copy; {year}. All rights reserved.</p>
+				<p class="mt-3 text-[16px] text-muted">
+					Template by <span class="font-medium text-ink">Zain Malik</span>
+				</p>
+			</div>
+			<StoreBadges class="shrink-0" compact />
+		</div>
+	</div>
+</footer>

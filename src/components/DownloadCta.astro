@@ -1,0 +1,56 @@
+---
+import StoreBadges from './StoreBadges.astro';
+---
+
+<section class="relative overflow-hidden bg-white">
+	<!-- full-bleed pastel wash -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 [background-image:radial-gradient(30%_52%_at_2%_88%,#F9C6D2_0%,transparent_70%),radial-gradient(26%_42%_at_20%_16%,#F7F3EF_0%,transparent_70%),radial-gradient(30%_46%_at_40%_98%,#C6E6BE_0%,transparent_70%),radial-gradient(32%_58%_at_70%_44%,#BFE4F7_0%,transparent_70%),radial-gradient(28%_46%_at_90%_10%,#D9C9F2_0%,transparent_70%),radial-gradient(24%_42%_at_99%_72%,#EDE4F8_0%,transparent_70%)]"
+	>
+	</div>
+
+	<!-- faint grid, fading out before it reaches the device -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,#EFEFEF_1px,transparent_1px),linear-gradient(to_bottom,#EFEFEF_1px,transparent_1px)] [background-size:84px_84px] [mask-image:linear-gradient(to_right,#000_0%,transparent_38%)] opacity-60"
+	>
+	</div>
+
+	<div class="relative mx-auto max-w-[1200px] px-6 lg:px-10">
+		<!-- items-stretch so the device column spans the row and `top` measures from the section -->
+		<div class="grid items-stretch gap-12 lg:grid-cols-2 lg:gap-0">
+			<div class="py-20 lg:py-[125px]">
+				<h2
+					class="text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.42] font-bold tracking-[-0.03em] text-ink"
+				>
+					Your finances, finally under<br class="hidden lg:block" /> control. Download Necta today.
+				</h2>
+
+				<p class="mt-6 text-[16px] leading-[1.86] text-muted">
+					Necta brings your accounts, budgets, and goals together<br class="hidden lg:block" /> in one
+					smart dashboard — built for how you actually live.
+				</p>
+
+				<StoreBadges class="mt-9" compact />
+			</div>
+
+			<!--
+				Device runs off the bottom of the section, which clips it. The render is
+				71.6% device within its frame, so 381px here puts the phone at the
+				mockup's ~273px.
+			-->
+			<div class="relative hidden lg:block">
+				<img
+					src="/images/mid-phone.webp"
+					alt="The Achieve app open on a phone"
+					width="1024"
+					height="1536"
+					loading="lazy"
+					decoding="async"
+					class="absolute top-[68px] left-[8%] w-[381px] max-w-none select-none"
+				/>
+			</div>
+		</div>
+	</div>
+</section>

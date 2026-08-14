@@ -1,0 +1,123 @@
+---
+import CapabilityCard from './CapabilityCard.astro';
+
+const br = '<br class="hidden lg:inline" />';
+
+const cards = {
+	expense: {
+		icon: 'expense' as const,
+		title: 'Smart expense tracking',
+		body: `Automatically categorize${br} spending and track your money.`,
+	},
+	insights: {
+		icon: 'insights' as const,
+		title: 'Real-time insights',
+		body: `Get instant updates and clear${br} analytics to guide smarter decisions.`,
+	},
+	accounts: {
+		icon: 'accounts' as const,
+		title: 'All accounts in one place',
+		body: `Connect your bank accounts,${br} cards, and wallets seamlessly.`,
+	},
+	secure: {
+		icon: 'secure' as const,
+		title: 'Secure & private',
+		body: `Your data is protected with bank-${br}level encryption and security.`,
+	},
+	budget: {
+		icon: 'budget' as const,
+		title: 'Budget planning tools',
+		body: `Set limits, track spending, and${br} stay within your budget easily.`,
+	},
+	alerts: {
+		icon: 'alerts' as const,
+		title: 'Instant notifications',
+		body: `Receive alerts for transactions,${br} bills, and unusual activity instantly.`,
+	},
+};
+
+// stacking order used by the narrow layout
+const flat = [
+	cards.expense,
+	cards.insights,
+	cards.accounts,
+	cards.secure,
+	cards.budget,
+	cards.alerts,
+];
+---
+
+<section class="relative overflow-hidden bg-white pt-24 pb-[160px]">
+	<!-- faint grid, same rhythm as the hero -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,#F4F4F4_1px,transparent_1px),linear-gradient(to_bottom,#F4F4F4_1px,transparent_1px)] [background-size:84px_84px] [mask-image:linear-gradient(to_bottom,#000_0%,#000_55%,transparent_92%)]"
+	>
+	</div>
+
+	<div class="relative mx-auto max-w-[1200px] px-6 lg:px-10">
+		<p
+			class="mx-auto w-fit bg-[linear-gradient(90deg,#FF8A3D_0%,#FF5FA2_55%,#B45FE0_100%)] bg-clip-text text-center text-[16px] font-medium text-transparent"
+		>
+			Benefits
+		</p>
+
+		<h2
+			class="mx-auto mt-4 text-center text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.16] font-bold tracking-[-0.03em] text-ink"
+		>
+			Everything you need to<br class="hidden sm:block" /> manage your finances
+		</h2>
+
+		<!-- Narrow: a plain stack of all six, device omitted -->
+		<div class="mt-11 grid gap-5 sm:grid-cols-2 lg:hidden">
+			{flat.map((c) => <CapabilityCard {...c} />)}
+		</div>
+
+		<!--
+			Wide: two cards centred beneath the heading, then two flanking columns with
+			the device between them. The top pair does not line up with the three
+			columns below, so it is its own centred row.
+		-->
+		<div class="mt-11 hidden justify-center gap-[94px] lg:flex">
+			<CapabilityCard {...cards.expense} class="w-[315px]" />
+			<CapabilityCard {...cards.insights} class="w-[315px]" />
+		</div>
+
+		<!-- The lower row sits ~20px further in on each side than the middle row. -->
+		<div class="mt-[43px] hidden grid-cols-[315px_1fr_315px] lg:grid">
+			<div class="flex flex-col gap-[61px]">
+				<CapabilityCard {...cards.accounts} />
+				<CapabilityCard {...cards.budget} class="translate-x-5" />
+			</div>
+
+			<!--
+				Device is absolute so it never drives the row height; it bleeds past the
+				section, which clips it. The render is 1024px wide but the phone itself only
+				spans 71.6% of that, so 425px here puts the device at the mockup's ~304px.
+			-->
+			<div class="relative">
+				<img
+					src="/images/mid-phone.webp"
+					alt="The Achieve app open on a phone, showing fixed and flexible investments"
+					width="1024"
+					height="1536"
+					loading="lazy"
+					decoding="async"
+					class="absolute top-0 left-1/2 w-[425px] max-w-none -translate-x-1/2 select-none"
+				/>
+			</div>
+
+			<div class="flex flex-col gap-[61px]">
+				<CapabilityCard {...cards.secure} />
+				<CapabilityCard {...cards.alerts} class="-translate-x-5" />
+			</div>
+		</div>
+	</div>
+
+	<!-- soft rainbow wash along the bottom edge of the section -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-x-0 bottom-0 h-[64px] opacity-75 blur-[34px] [background-image:linear-gradient(90deg,#F2C9E4_0%,#F7D3C4_22%,#FBEBA6_44%,#C6E7BE_62%,#A9D8F0_80%,#D9C9F2_100%)]"
+	>
+	</div>
+</section>

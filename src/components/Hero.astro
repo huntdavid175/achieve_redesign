@@ -1,0 +1,116 @@
+---
+import PhoneMockup from './PhoneMockup.astro';
+import StoreBadges from './StoreBadges.astro';
+
+// Placeholder avatars. Swap each `class` for <img src="/images/avatars/1.jpg" /> when
+// the real photos land — the ring/overlap wrapper stays the same.
+const avatars = [
+	'bg-[linear-gradient(140deg,#9CC9E8,#6E8FB5)]',
+	'bg-[linear-gradient(140deg,#F2C7A8,#D89C77)]',
+	'bg-[linear-gradient(140deg,#C3B3E6,#8E79C4)]',
+	'bg-[linear-gradient(140deg,#B9D6B0,#7FA878)]',
+];
+---
+
+<section class="relative overflow-hidden bg-white">
+	<!-- Faint grid, fading out below the fold line -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,#F1F1F1_1px,transparent_1px),linear-gradient(to_bottom,#F1F1F1_1px,transparent_1px)] [background-size:84px_84px] [mask-image:linear-gradient(to_bottom,#000_0%,#000_10%,transparent_42%)]"
+	>
+	</div>
+
+	<!-- Soft rainbow bloom -->
+	<div
+		aria-hidden="true"
+		class="pointer-events-none absolute top-[14%] left-[-6%] h-[125%] w-[92%] blur-[70px] [background-image:radial-gradient(32%_40%_at_32%_74%,#FF8FBF_0%,transparent_72%),radial-gradient(30%_38%_at_52%_58%,#FFB27A_0%,transparent_72%),radial-gradient(27%_33%_at_63%_36%,#FFEBA3_0%,transparent_72%),radial-gradient(30%_38%_at_79%_46%,#B6E39A_0%,transparent_72%),radial-gradient(26%_32%_at_73%_20%,#9FD6F2_0%,transparent_72%),radial-gradient(28%_36%_at_38%_28%,#E4CCF5_0%,transparent_72%)]"
+	>
+	</div>
+
+	<div class="relative mx-auto max-w-[1200px] px-6 lg:px-10">
+		<!-- items-stretch so the device column takes the row height set by the copy column -->
+		<div class="grid items-stretch gap-12 lg:grid-cols-2 lg:gap-6">
+			<!--
+				Copy. Vertical padding is tied to viewport height so the store badges stay
+				above the fold on short laptop screens, and stays well short of the hero's
+				full height so the device beside it reads as the taller element.
+			-->
+			<div class="pt-16 pb-20 lg:pt-[clamp(3rem,14vh,145px)] lg:pb-[clamp(4rem,19vh,180px)]">
+				<div class="flex items-center gap-3.5">
+					<div class="flex">
+						{
+							avatars.map((avatar, i) => (
+								<span
+									class:list={[
+										'size-[34px] rounded-full ring-[3px] ring-white',
+										avatar,
+										i > 0 && '-ml-2.5',
+									]}
+								/>
+							))
+						}
+					</div>
+					<div>
+						<p class="text-[14px] font-medium text-ink-soft">Trusted by 40K Users</p>
+						<div class="mt-0.5 flex items-center gap-1.5">
+							<div class="flex gap-[3px]">
+								{
+									Array.from({ length: 5 }).map(() => (
+										<svg viewBox="0 0 24 24" fill="currentColor" class="size-4 text-star">
+											<path d="m12 1.9 3.1 6.3 6.9 1-5 4.9 1.2 6.9-6.2-3.3-6.2 3.3L7 14.1l-5-4.9 6.9-1L12 1.9Z" />
+										</svg>
+									))
+								}
+							</div>
+							<span class="text-[15px] font-bold text-ink">5.0</span>
+						</div>
+					</div>
+				</div>
+
+				<!--
+					Type scales with the container (max-w-[1200px] minus px-10) so the mockup's
+					proportions hold at every width: 44.8px headline / 16.8px body once the container
+					stops growing at 1200px, smaller below that.
+				-->
+				<h1
+					class="mt-11 max-w-[9ch] text-[clamp(2rem,calc(4vw-3.2px),2.8rem)] leading-[1.19] font-bold tracking-[-0.035em] text-ink lg:max-w-none"
+				>
+					Everything you need to<br class="hidden lg:block" /> understand your money.
+				</h1>
+
+				<!-- max-width in em so the "…and grow your / money…" break survives the rescale -->
+				<p
+					class="mt-6 max-w-[22.86em] text-[clamp(0.9375rem,calc(1.5vw-1.2px),1.05rem)] leading-[1.55] text-muted"
+				>
+					Track spending, manage accounts, and grow your money with real-time insights built for
+					modern life.
+				</p>
+
+				<StoreBadges class="mt-9" />
+			</div>
+
+			<!--
+				Device. From lg up it is absolutely positioned so it does not contribute to
+				the row height — the copy column sets that — and is stretched 40px past the
+				bottom, which keeps it reliably a little taller than the text beside it.
+				The section clips the overhang.
+			-->
+			<div class="relative flex justify-center lg:block">
+				<!-- nudged right of centre; the 32px stays inside the container's px-10 gutter -->
+				<div
+					class="lg:absolute lg:inset-x-0 lg:top-0 lg:bottom-[-40px] lg:flex lg:translate-x-8 lg:items-end lg:justify-center"
+				>
+					<PhoneMockup />
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="bg-white py-14 text-center">
+	<p
+		class="bg-[linear-gradient(90deg,#FF8A3D_0%,#FF6B6B_20%,#FF5FA2_40%,#B45FE0_62%,#5FBFC9_82%,#7BD16A_100%)] bg-clip-text text-[17px] font-medium text-transparent"
+	>
+		Trusted by startups, freelancers, and growing teams worldwide
+	</p>
+</div>
