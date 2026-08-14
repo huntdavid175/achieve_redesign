@@ -1,16 +1,33 @@
 ---
-// Placeholder brand marks — swap for real client logos when they land.
+// Client brand marks, drawn inline so they inherit the muted marquee colour.
+// `label` is omitted where the mark already contains the wordmark (MTN).
 const brands = [
-	{ name: 'Lumina', icon: 'lumina' },
-	{ name: 'Synergy', icon: 'synergy' },
-	{ name: 'Vortex', icon: 'vortex' },
-	{ name: 'Enigma', icon: 'enigma' },
-	{ name: 'Velocity', icon: 'velocity' },
-	{ name: 'Spectrum', icon: 'spectrum' },
+	{
+		name: 'Paystack',
+		icon: 'paystack',
+		label: 'paystack',
+		viewBox: '0 0 24 24',
+		class: 'size-6',
+	},
+	{
+		name: 'MTN',
+		icon: 'mtn',
+		viewBox: '320 320 1280 640',
+		class: 'h-8 w-auto',
+	},
+	{
+		name: 'Petra',
+		icon: 'petra',
+		label: 'PETRA',
+		labelClass: 'tracking-[0.14em]',
+		viewBox: '0 0 24 24',
+		class: 'size-6',
+	},
 ];
 
-// duplicated so the -50% translate loops seamlessly
-const strip = [...brands, ...brands];
+// repeated so the -50% translate loops seamlessly and the strip stays wider
+// than the container with only three brands
+const strip = [...brands, ...brands, ...brands, ...brands];
 ---
 
 <div class="py-8" aria-label="Trusted by">
@@ -29,55 +46,39 @@ const strip = [...brands, ...brands];
 					class="mr-14 flex shrink-0 items-center gap-2 text-[#5F7972]"
 					aria-hidden={i >= brands.length ? 'true' : undefined}
 				>
-					<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-6 shrink-0">
-						{brand.icon === 'lumina' && (
+					<svg
+						viewBox={brand.viewBox}
+						fill="currentColor"
+						aria-hidden="true"
+						class={`shrink-0 ${brand.class}`}
+					>
+						{brand.icon === 'paystack' && (
+							<Fragment>
+								<rect x="3" y="5" width="13" height="2.7" rx="0.6" opacity=".55" />
+								<rect x="3" y="9" width="18" height="2.7" rx="0.6" />
+								<rect x="3" y="13" width="15.5" height="2.7" rx="0.6" />
+								<rect x="3" y="17" width="8" height="2.7" rx="0.6" opacity=".55" />
+							</Fragment>
+						)}
+						{brand.icon === 'mtn' && (
+							<path d="M960 320c-353.46 0-640 143.27-640 320s286.54 320 640 320 640-143.27 640-320-286.54-320-640-320zm0 589.48c-325.56 0-589.48-120.65-589.48-269.48S634.44 370.52 960 370.52 1549.48 491.17 1549.48 640 1285.56 909.48 960 909.48zm-80.71-325.62v-50.53h180.55v50.53h-65v162.81H944.3V583.86zm398.49-50.53v213.34h-50.52l-91.63-127v127h-50.52V533.33h50.52l91.63 127v-127zM640.72 746.67V533.33h50.52l56.13 86.34 56.13-86.34H854v213.34h-50.5V626l-38.32 58.9h-35.62L691.24 626v120.67z" />
+						)}
+						{brand.icon === 'petra' && (
 							<Fragment>
 								<path
-									d="M12 1.6a10.4 10.4 0 1 0 0 20.8 10.4 10.4 0 0 0 0-20.8Zm0 2.6a7.8 7.8 0 1 1 0 15.6 7.8 7.8 0 0 1 0-15.6Z"
-									opacity=".45"
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M12 2.6 21.4 21H2.6L12 2.6Zm0 6.4L7.4 18.4h9.2L12 9Z"
 								/>
-								<path d="M12 5.6a6.4 6.4 0 0 1 4.5 10.9A6.4 6.4 0 0 0 12 5.6Z" />
-								<circle cx="12" cy="12" r="3.1" />
-							</Fragment>
-						)}
-						{brand.icon === 'synergy' && (
-							<Fragment>
-								<path d="M4.2 3.4 15 12 4.2 20.6V3.4Z" opacity=".45" />
-								<path d="M9.6 7.7 17.4 12l-7.8 4.3V7.7Z" />
-							</Fragment>
-						)}
-						{brand.icon === 'vortex' && (
-							<Fragment>
-								<path d="M12 2.2c4 2.3 6.4 5.6 6.4 9.4 0 4.2-2.9 7.4-6.4 10.2V2.2Z" opacity=".45" />
-								<path d="M12 2.2v19.6C8.5 19 5.6 15.8 5.6 11.6c0-3.8 2.4-7.1 6.4-9.4Z" />
-								<circle cx="12" cy="10.4" r="2.6" opacity=".55" />
-							</Fragment>
-						)}
-						{brand.icon === 'enigma' && (
-							<Fragment>
-								<path d="M10.7 1.8h2.6v20.4h-2.6z" />
-								<path d="M2.4 6.6 3.7 4.3l17.7 10.2-1.3 2.3z" opacity=".55" />
-								<path d="M20.3 4.3l1.3 2.3L3.9 16.8l-1.3-2.3z" opacity=".55" />
-							</Fragment>
-						)}
-						{brand.icon === 'velocity' && (
-							<Fragment>
-								<path
-									d="M12 1.6a10.4 10.4 0 1 0 0 20.8 10.4 10.4 0 0 0 0-20.8Zm0 2.6a7.8 7.8 0 1 1 0 15.6 7.8 7.8 0 0 1 0-15.6Z"
-									opacity=".45"
-								/>
-								<path d="M14.6 6.4v7.2a2.6 2.6 0 1 1-2.6-2.6h.9V6.4h1.7Z" />
-							</Fragment>
-						)}
-						{brand.icon === 'spectrum' && (
-							<Fragment>
-								<path d="M2.6 18.4c0-7.1 5.7-12.8 12.8-12.8v3.4c-5.2 0-9.4 4.2-9.4 9.4H2.6Z" opacity=".4" />
-								<path d="M7.4 18.4c0-4.4 3.6-8 8-8v3.4a4.6 4.6 0 0 0-4.6 4.6H7.4Z" opacity=".7" />
-								<circle cx="15.4" cy="18.4" r="2.4" />
+								<path d="M12 12.4 15 18.4H9l3-6Z" opacity=".55" />
 							</Fragment>
 						)}
 					</svg>
-					<span class="text-[21px] font-medium whitespace-nowrap">{brand.name}</span>
+					{brand.label && (
+						<span class={`text-[21px] font-medium whitespace-nowrap ${brand.labelClass ?? ''}`}>
+							{brand.label}
+						</span>
+					)}
 				</div>
 			))
 		}
