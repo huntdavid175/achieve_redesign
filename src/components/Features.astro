@@ -8,8 +8,8 @@ import SpendingPhone from './SpendingPhone.astro';
 <section id="features" class="relative bg-surface pt-[150px] pb-24">
 	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
 		<!-- Header: eyebrow + heading on the left, supporting copy right-aligned -->
-		<div class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-6">
-			<div>
+		<div data-reveal-group class="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-6">
+			<div data-reveal>
 				<p
 					class="w-fit text-gradient-brand text-[16px] font-medium"
 				>
@@ -22,7 +22,7 @@ import SpendingPhone from './SpendingPhone.astro';
 				</h2>
 			</div>
 
-			<p class="text-[16px] leading-[1.6] text-muted lg:text-right">
+			<p data-reveal class="text-[16px] leading-[1.6] text-muted lg:text-right">
 				We use bank-grade security and encryption to keep<br class="hidden lg:block" /> your
 				transactions and personal information protected.
 			</p>
@@ -31,10 +31,11 @@ import SpendingPhone from './SpendingPhone.astro';
 		<!-- Cards. Outer grid holds the three rows on the same 20px gutter. -->
 		<div class="mt-10 grid gap-5">
 		<!-- Row 1. items-stretch keeps both the same height; each clips its own artwork. -->
-		<div class="grid items-stretch gap-5 md:grid-cols-2">
+		<div data-reveal-group class="grid items-stretch gap-5 md:grid-cols-2">
 			<!-- Card 1: copy on top, device bleeding off the bottom -->
 			<article
-				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
+				data-reveal
+				class="transition-transform duration-300 hover:-translate-y-1 relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
 			>
 				<div
 					aria-hidden="true"
@@ -59,7 +60,8 @@ import SpendingPhone from './SpendingPhone.astro';
 
 			<!-- Card 2: device bleeding off the top, copy underneath -->
 			<article
-				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
+				data-reveal
+				class="transition-transform duration-300 hover:-translate-y-1 relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
 			>
 				<div
 					aria-hidden="true"
@@ -99,6 +101,7 @@ import SpendingPhone from './SpendingPhone.astro';
 
 		<!-- Row 2: full-width card, device on the left bleeding off the bottom -->
 		<article
+			data-reveal
 			class="relative overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[417px]"
 		>
 			<div
@@ -127,10 +130,11 @@ import SpendingPhone from './SpendingPhone.astro';
 		</article>
 
 		<!-- Row 3: same alternating pair as row 1 -->
-		<div class="grid items-stretch gap-5 md:grid-cols-2">
+		<div data-reveal-group class="grid items-stretch gap-5 md:grid-cols-2">
 			<!-- Copy on top, Analytics device bleeding off the bottom -->
 			<article
-				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
+				data-reveal
+				class="transition-transform duration-300 hover:-translate-y-1 relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
 			>
 				<div
 					aria-hidden="true"
@@ -155,7 +159,8 @@ import SpendingPhone from './SpendingPhone.astro';
 
 			<!-- Spending device bleeding off the top, copy underneath -->
 			<article
-				class="relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
+				data-reveal
+				class="transition-transform duration-300 hover:-translate-y-1 relative flex flex-col overflow-hidden rounded-[28px] border border-[#1B2A24] bg-[#0B1512] lg:min-h-[455px]"
 			>
 				<div
 					aria-hidden="true"

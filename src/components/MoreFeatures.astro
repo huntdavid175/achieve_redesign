@@ -6,7 +6,7 @@ import TransactionsPhone from './TransactionsPhone.astro';
 // Card geometry read off the mockup: three ~362px cards on an 18px gutter fill
 // the 1120px container exactly; the device sits at 16.4%/16.3% inset, 67.3% wide.
 const card =
-	'relative aspect-square overflow-hidden rounded-[28px] bg-surface-2';
+	'transition-transform duration-300 hover:-translate-y-1 relative aspect-square overflow-hidden rounded-[28px] bg-surface-2';
 const device = 'absolute top-[16.3%] left-[16.4%] w-[67.3%]';
 
 const g1 =
@@ -20,19 +20,21 @@ const g3 =
 <section class="relative bg-surface py-24">
 	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
 		<p
+			data-reveal
 			class="mx-auto w-fit text-gradient-brand text-center text-[16px] font-medium"
 		>
 			More Features
 		</p>
 
 		<h2
+			data-reveal
 			class="mx-auto mt-4 text-center text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.16] font-bold tracking-[-0.03em] text-ink"
 		>
 			Everything you need,<br class="hidden sm:block" /> all in one place.
 		</h2>
 
-		<div class="mt-10 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
-			<div>
+		<div data-reveal-group class="mt-10 grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+			<div data-reveal>
 				<div class:list={[card, g1]}>
 					<div class={device}><ReadyCashPhone /></div>
 				</div>
@@ -42,7 +44,7 @@ const g3 =
 				</p>
 			</div>
 
-			<div>
+			<div data-reveal>
 				<div class:list={[card, g2]}>
 					<div class={device}><SubscriptionsPhone /></div>
 				</div>
@@ -53,7 +55,7 @@ const g3 =
 				</p>
 			</div>
 
-			<div>
+			<div data-reveal>
 				<div class:list={[card, g3]}>
 					<div class={device}><TransactionsPhone /></div>
 				</div>

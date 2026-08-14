@@ -31,22 +31,24 @@ const faqs = [
 <section class="relative bg-surface py-24">
 	<div class="mx-auto max-w-[1200px] px-6 lg:px-10">
 		<p
+			data-reveal
 			class="mx-auto w-fit text-gradient-brand text-center text-[16px] font-medium"
 		>
 			FAQs
 		</p>
 
 		<h2
+			data-reveal
 			class="mx-auto mt-3 text-center text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.22] font-bold tracking-[-0.03em] text-ink"
 		>
 			Got questions?<br /> We've got answers.
 		</h2>
 
 		<!-- narrow centred column, as in the mockup -->
-		<div class="mx-auto mt-12 flex max-w-[580px] flex-col gap-[10px]">
+		<div data-reveal-group class="mx-auto mt-12 flex max-w-[580px] flex-col gap-[10px]">
 			{
 				faqs.map((item) => (
-					<details class="group rounded-[14px] bg-[#0B1512] transition-colors hover:bg-[#12201B]">
+					<details data-reveal class="group rounded-[14px] bg-[#0B1512] transition-colors hover:bg-[#12201B]">
 						<summary class="flex min-h-[62px] cursor-pointer list-none items-center justify-between gap-5 px-5 pr-6 [&::-webkit-details-marker]:hidden">
 							<span class="text-[15px] font-medium text-ink">{item.q}</span>
 							{/* rotating the whole plus 45° turns it into a close icon */}
@@ -67,7 +69,7 @@ const faqs = [
 			}
 		</div>
 
-		<p class="mt-14 text-center text-[16px] text-muted">
+		<p data-reveal class="mt-14 text-center text-[16px] text-muted">
 			If you can't find the answer or need help, email us at{' '}
 			<a href="mailto:help@achieve.com" class="underline underline-offset-2 hover:text-ink">
 				help@achieve.com

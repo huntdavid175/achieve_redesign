@@ -23,7 +23,7 @@ const avatars = [
 	<!-- Soft rainbow bloom -->
 	<div
 		aria-hidden="true"
-		class="pointer-events-none absolute top-[14%] left-[-6%] h-[125%] w-[92%] blur-[70px] [background-image:radial-gradient(32%_40%_at_32%_74%,#0E7A5E_0%,transparent_72%),radial-gradient(30%_38%_at_52%_58%,#12805F_0%,transparent_72%),radial-gradient(27%_33%_at_63%_36%,#3D7024_0%,transparent_72%),radial-gradient(30%_38%_at_79%_46%,#1E6B3A_0%,transparent_72%),radial-gradient(26%_32%_at_73%_20%,#0F5F6B_0%,transparent_72%),radial-gradient(28%_36%_at_38%_28%,#0E5449_0%,transparent_72%)]"
+		class="animate-drift pointer-events-none absolute top-[14%] left-[-6%] h-[125%] w-[92%] blur-[70px] [background-image:radial-gradient(32%_40%_at_32%_74%,#0E7A5E_0%,transparent_72%),radial-gradient(30%_38%_at_52%_58%,#12805F_0%,transparent_72%),radial-gradient(27%_33%_at_63%_36%,#3D7024_0%,transparent_72%),radial-gradient(30%_38%_at_79%_46%,#1E6B3A_0%,transparent_72%),radial-gradient(26%_32%_at_73%_20%,#0F5F6B_0%,transparent_72%),radial-gradient(28%_36%_at_38%_28%,#0E5449_0%,transparent_72%)]"
 	>
 	</div>
 
@@ -35,7 +35,7 @@ const avatars = [
 				above the fold on short laptop screens, and stays well short of the hero's
 				full height so the device beside it reads as the taller element.
 			-->
-			<div class="pt-16 pb-20 lg:pt-[clamp(3rem,14vh,145px)] lg:pb-[clamp(4rem,19vh,180px)]">
+			<div data-hero-enter class="pt-16 pb-20 lg:pt-[clamp(3rem,14vh,145px)] lg:pb-[clamp(4rem,19vh,180px)]">
 				<div class="flex items-center gap-3.5">
 					<div class="flex">
 						{
@@ -107,7 +107,7 @@ const avatars = [
 	</div>
 </section>
 
-<div class="bg-surface py-14 text-center">
+<div data-reveal class="bg-surface py-14 text-center">
 	<p
 		class="text-gradient-brand text-[17px] font-medium"
 	>

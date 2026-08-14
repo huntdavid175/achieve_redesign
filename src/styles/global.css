@@ -88,6 +88,144 @@ html {
 	scroll-behavior: smooth;
 }
 
+/* ============================================================
+   Motion
+   ============================================================ */
+
+@keyframes reveal-up {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 16px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Very slow ambient movement for the blurred colour washes. */
+@keyframes drift {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+	50% {
+		transform: translate3d(2%, -1.5%, 0) scale(1.05);
+	}
+}
+
+/*
+ * Scroll reveals.
+ *
+ * Elements are VISIBLE by default, so the page is correct when JS is disabled,
+ * fails, or the user prefers reduced motion. The inline head script opts in by
+ * putting `reveal-ready` on <html> before first paint (avoiding a flash of
+ * shown-then-hidden content), and an IntersectionObserver adds `is-visible`.
+ */
+.reveal-ready [data-reveal] {
+	opacity: 0;
+	transform: translate3d(0, 16px, 0);
+	transition:
+		opacity 620ms cubic-bezier(0.22, 0.61, 0.36, 1),
+		transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal-ready [data-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+/* Children of a group come in one after another rather than all at once. */
+.reveal-ready [data-reveal-group] > [data-reveal]:nth-child(2),
+.reveal-ready [data-reveal-group] [data-reveal]:nth-child(2) {
+	transition-delay: 90ms;
+}
+.reveal-ready [data-reveal-group] > [data-reveal]:nth-child(3),
+.reveal-ready [data-reveal-group] [data-reveal]:nth-child(3) {
+	transition-delay: 180ms;
+}
+.reveal-ready [data-reveal-group] > [data-reveal]:nth-child(4) {
+	transition-delay: 270ms;
+}
+.reveal-ready [data-reveal-group] > [data-reveal]:nth-child(5) {
+	transition-delay: 360ms;
+}
+.reveal-ready [data-reveal-group] > [data-reveal]:nth-child(6) {
+	transition-delay: 450ms;
+}
+
+/*
+ * Hero entrance. Runs on load rather than on scroll since it is above the fold.
+ * The device is deliberately excluded — it is the LCP element, and fading it in
+ * delays the LCP mark.
+ */
+[data-hero-enter] > * {
+	animation: reveal-up 720ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+[data-hero-enter] > *:nth-child(1) {
+	animation-delay: 80ms;
+}
+[data-hero-enter] > *:nth-child(2) {
+	animation-delay: 180ms;
+}
+[data-hero-enter] > *:nth-child(3) {
+	animation-delay: 280ms;
+}
+[data-hero-enter] > *:nth-child(4) {
+	animation-delay: 380ms;
+}
+
+.animate-drift {
+	animation: drift 26s ease-in-out infinite;
+	will-change: transform;
+}
+.animate-drift-slow {
+	animation: drift 38s ease-in-out infinite reverse;
+	will-change: transform;
+}
+
+/*
+ * Animated <details>. Needs interpolate-size to transition to `auto`; without
+ * support the panel simply snaps open, which is the current behaviour.
+ */
+@supports (interpolate-size: allow-keywords) {
+	:root {
+		interpolate-size: allow-keywords;
+	}
+
+	details::details-content {
+		block-size: 0;
+		overflow: hidden;
+		transition:
+			block-size 320ms cubic-bezier(0.22, 0.61, 0.36, 1),
+			content-visibility 320ms allow-discrete;
+	}
+
+	details[open]::details-content {
+		block-size: auto;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	/* reveals must resolve to visible, never to hidden */
+	.reveal-ready [data-reveal],
+	.reveal-ready [data-reveal].is-visible {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	[data-hero-enter] > *,
+	.animate-drift,
+	.animate-drift-slow {
+		animation: none;
+	}
+
+	details::details-content {
+		transition: none;
+	}
+}
+
 /*
  * Logo marquee. Each item carries its own right margin (rather than the row
  * using `gap`) so the strip is perfectly periodic and translating by -50%

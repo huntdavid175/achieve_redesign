@@ -22,6 +22,42 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+
+		{/*
+			Runs before first paint so `reveal-ready` is applied without a flash of
+			shown-then-hidden content. Bails out entirely when the API is missing or
+			reduced motion is requested, in which case the CSS leaves everything
+			visible. is:inline keeps it out of the module graph — it must not defer.
+		*/}
+		<script is:inline>
+			(function () {
+				if (!('IntersectionObserver' in window)) return;
+				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+				document.documentElement.classList.add('reveal-ready');
+
+				function start() {
+					var io = new IntersectionObserver(
+						function (entries) {
+							for (var i = 0; i < entries.length; i++) {
+								if (!entries[i].isIntersecting) continue;
+								entries[i].target.classList.add('is-visible');
+								io.unobserve(entries[i].target); // reveal once, then stop watching
+							}
+						},
+						{ rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+					);
+					var els = document.querySelectorAll('[data-reveal]');
+					for (var i = 0; i < els.length; i++) io.observe(els[i]);
+				}
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', start);
+				} else {
+					start();
+				}
+			})();
+		</script>
 	</head>
 	<body class="antialiased">
 		<slot />

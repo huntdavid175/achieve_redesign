@@ -57,12 +57,14 @@ const flat = [
 
 	<div class="relative mx-auto max-w-[1200px] px-6 lg:px-10">
 		<p
+			data-reveal
 			class="mx-auto w-fit text-gradient-brand text-center text-[16px] font-medium"
 		>
 			Benefits
 		</p>
 
 		<h2
+			data-reveal
 			class="mx-auto mt-4 text-center text-[clamp(1.625rem,calc(2.679vw-2.14px),1.875rem)] leading-[1.16] font-bold tracking-[-0.03em] text-ink"
 		>
 			Everything you need to<br class="hidden sm:block" /> manage your finances
@@ -78,13 +80,13 @@ const flat = [
 			the device between them. The top pair does not line up with the three
 			columns below, so it is its own centred row.
 		-->
-		<div class="mt-11 hidden justify-center gap-[94px] lg:flex">
+		<div data-reveal-group class="mt-11 hidden justify-center gap-[94px] lg:flex">
 			<CapabilityCard {...cards.expense} class="w-[315px]" />
 			<CapabilityCard {...cards.insights} class="w-[315px]" />
 		</div>
 
 		<!-- The lower row sits ~20px further in on each side than the middle row. -->
-		<div class="mt-[43px] hidden grid-cols-[315px_1fr_315px] lg:grid">
+		<div data-reveal-group class="mt-[43px] hidden grid-cols-[315px_1fr_315px] lg:grid">
 			<div class="flex flex-col gap-[61px]">
 				<CapabilityCard {...cards.accounts} />
 				<CapabilityCard {...cards.budget} class="translate-x-5" />
