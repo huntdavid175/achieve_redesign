@@ -1,6 +1,4 @@
 ---
-import Logo from './Logo.astro';
-
 const links = [
 	{ label: 'Features', href: '#features' },
 	{ label: 'Benefits', href: '#benefits' },
@@ -13,9 +11,15 @@ const links = [
 
 <header class="relative z-50">
 	<nav class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
-		<a href="/" class="flex items-center gap-2.5">
-			<Logo class="size-8" />
-			<span class="text-[22px] font-bold tracking-[-0.02em] text-ink">Necta</span>
+		<a href="/" class="flex items-center">
+			<img
+				src="/images/logo.png"
+				alt="Achieve"
+				width="288"
+				height="149"
+				class="h-9 w-auto"
+				fetchpriority="high"
+			/>
 		</a>
 
 		<ul class="hidden items-center gap-7 lg:flex">

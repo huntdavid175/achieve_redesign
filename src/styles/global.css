@@ -43,6 +43,22 @@
 	--color-muted: #56585e;
 	--color-star: #ffa51f;
 	--color-hairline: #ececec;
+
+	/* Sampled from the Achieve logo: cyan through teal to emerald. */
+	--color-brand-cyan: #14bcc4;
+	--color-brand: #14cca9;
+	--color-brand-green: #14d49d;
+}
+
+/*
+ * Brand gradient text — every section eyebrow and the hero tagline use this, so
+ * the accent is defined once rather than repeated as a long arbitrary value.
+ */
+.text-gradient-brand {
+	background-image: linear-gradient(90deg, #14bcc4 0%, #14cca9 52%, #3ed98f 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 
 html {

@@ -1,5 +1,4 @@
 ---
-import Logo from './Logo.astro';
 import StoreBadges from './StoreBadges.astro';
 
 const columns = [
@@ -69,9 +68,15 @@ const year = new Date().getFullYear();
 		<!-- brand + link columns -->
 		<div class="flex flex-col gap-12 lg:flex-row lg:justify-between">
 			<div>
-				<a href="/" class="flex items-center gap-2.5">
-					<Logo class="size-[25px]" />
-					<span class="text-[20px] font-bold tracking-[-0.02em] text-ink">Necta</span>
+				<a href="/" class="flex items-center">
+					<img
+						src="/images/logo.png"
+						alt="Achieve"
+						width="288"
+						height="149"
+						loading="lazy"
+						class="h-8 w-auto"
+					/>
 				</a>
 
 				<p class="mt-6 max-w-[360px] text-[16px] leading-[1.6] text-muted">
@@ -82,7 +87,7 @@ const year = new Date().getFullYear();
 				<div class="mt-10 flex items-center gap-3">
 					<a
 						href="#"
-						aria-label="Necta on Facebook"
+						aria-label="Achieve on Facebook"
 						class="flex size-[34px] items-center justify-center rounded-full bg-[#F7F7F8] text-ink transition hover:bg-[#EFEFF1]"
 					>
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-4">
@@ -94,7 +99,7 @@ const year = new Date().getFullYear();
 					</a>
 					<a
 						href="#"
-						aria-label="Necta on X"
+						aria-label="Achieve on X"
 						class="flex size-[34px] items-center justify-center rounded-full bg-[#F7F7F8] text-ink transition hover:bg-[#EFEFF1]"
 					>
 						<svg viewBox="0 0 24 24" fill="currentColor" class="size-[15px]">
@@ -105,7 +110,7 @@ const year = new Date().getFullYear();
 					</a>
 					<a
 						href="#"
-						aria-label="Necta on Instagram"
+						aria-label="Achieve on Instagram"
 						class="flex size-[34px] items-center justify-center rounded-full bg-[#F7F7F8] text-ink transition hover:bg-[#EFEFF1]"
 					>
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-4">
@@ -148,7 +153,7 @@ const year = new Date().getFullYear();
 		<!-- legal + badges -->
 		<div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 			<div>
-				<p class="text-[16px] text-muted">Necta &copy; {year}. All rights reserved.</p>
+				<p class="text-[16px] text-muted">Achieve &copy; {year}. All rights reserved.</p>
 				<p class="mt-3 text-[16px] text-muted">
 					Template by <span class="font-medium text-ink">Zain Malik</span>
 				</p>
