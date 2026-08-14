@@ -1,29 +1,29 @@
 ---
 /*
-  Placeholder artwork for "Track Your Spending" — the recent transaction list.
-  Brand marks are stand-in coloured discs, not the real logos.
+  Placeholder artwork for "Redeem Into DigiSave" — the recent activity list.
+  Marks are stand-in coloured discs, not real logos.
 */
 const tx = [
-	{ name: 'Starbucks', when: 'Today, at 11:48 PM', amount: '23.25', mark: 'bg-[#0F7A4A]' },
-	{ name: 'Netflix', when: '15 Nov 2022, at 05:50 PM', amount: '239.25', mark: 'bg-[#12100F]' },
-	{ name: 'Figma Sub', when: '22 Nov 2022, at 10.48 AM', amount: '12.99', mark: 'bg-[#2C2C2C]' },
+	{ name: 'Points redeemed', when: 'Today, at 11:48 AM', amount: '40.00', mark: 'bg-[#0F7A4A]' },
+	{ name: 'DigiSave top-up', when: '12 Aug 2026, at 05:50 PM', amount: '250.00', mark: 'bg-[#12100F]' },
+	{ name: 'Referral bonus', when: '04 Aug 2026, at 10:48 AM', amount: '10.00', mark: 'bg-[#2C2C2C]' },
 	{
-		name: 'Zahir Mays',
-		when: '10 Jan 2022, at 08:59 PM',
-		amount: '23.25',
+		name: 'Eurobond Trust',
+		when: '28 Jul 2026, at 08:59 PM',
+		amount: '800.00',
 		mark: 'bg-[linear-gradient(150deg,#8FB6D9,#4E7BA6)]',
 	},
 	{
-		name: 'Kelly Jane',
-		when: '10 Jan 2022',
-		amount: '23.25',
+		name: 'MoMo top-up',
+		when: '10 Jul 2026',
+		amount: '120.00',
 		mark: 'bg-[linear-gradient(150deg,#E8B79C,#C98A6D)]',
 	},
 ];
 ---
 
 <div class="relative aspect-[860/1864] w-full overflow-hidden rounded-[24px] bg-[#08090A] ring-1 ring-white/10">
-	<p class="px-4 pt-6 text-[15px] font-bold text-white">Recent Transaction</p>
+	<p class="px-4 pt-6 text-[15px] font-bold text-white">Recent Activity</p>
 
 	<div class="mt-4 flex flex-col gap-[18px] px-4">
 		{
@@ -33,13 +33,13 @@ const tx = [
 					<span class="min-w-0 flex-1">
 						<span class="flex items-center gap-1">
 							<span class="truncate text-[11px] font-medium text-white">{t.name}</span>
-							<svg viewBox="0 0 24 24" fill="#F0402F" class="size-[8px] shrink-0">
-								<path d="M6 18 18 6M9 6h9v9" stroke="#F0402F" stroke-width="3" fill="none" />
+							<svg viewBox="0 0 24 24" fill="#3ED98F" class="size-[8px] shrink-0">
+								<path d="M18 6 6 18M15 18H6V9" stroke="#3ED98F" stroke-width="3" fill="none" />
 							</svg>
 						</span>
 						<span class="mt-[2px] block truncate text-[7.5px] text-white/40">{t.when}</span>
 					</span>
-					<span class="shrink-0 text-[10px] text-white">&minus;&nbsp;${t.amount}</span>
+					<span class="shrink-0 text-[10px] text-white">+&nbsp;GHS {t.amount}</span>
 				</div>
 			))
 		}

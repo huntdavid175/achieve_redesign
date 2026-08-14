@@ -1,14 +1,13 @@
 ---
 /*
-  Placeholder artwork for "Get control over your subscriptions".
-  "upcomming" is spelled as it appears in the mockup.
+  Placeholder artwork for "Pick a goal, start investing" — the portfolio list.
 */
-const subs = [
-	{ name: 'Netflix', price: '$25/month', dot: 'bg-[#34D3A0]' },
-	{ name: 'Framer', price: '$45/month', dot: 'bg-[#A78BFA]' },
-	{ name: 'Spotify', price: '$4/month', dot: 'bg-[#FBD34D]' },
-	{ name: 'Youtube', price: '$20/month', dot: 'bg-[#F0402F]' },
-	{ name: 'GoDaddy', price: '$120/year', dot: 'bg-[#3B82F6]' },
+const holdings = [
+	{ name: 'DigiSave', price: 'GHS 2,450', dot: 'bg-[#34D3A0]' },
+	{ name: 'Eurobond Trust', price: 'GHS 4,300', dot: 'bg-[#A78BFA]' },
+	{ name: 'Global Tech', price: 'GHS 1,200', dot: 'bg-[#FBD34D]' },
+	{ name: 'School fees goal', price: 'GHS 800', dot: 'bg-[#3B82F6]' },
+	{ name: 'Achieve Points', price: '40 pts', dot: 'bg-[#F0A32F]' },
 ];
 ---
 
@@ -17,14 +16,14 @@ const subs = [
 		<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" class="size-[15px]">
 			<path d="M14 5.5 7.5 12l6.5 6.5" stroke-linecap="round" stroke-linejoin="round"></path>
 		</svg>
-		<span class="flex-1 text-center text-[15px] font-bold text-white">Subscriptions</span>
+		<span class="flex-1 text-center text-[15px] font-bold text-white">My Investments</span>
 		<span class="size-[15px]"></span>
 	</div>
 
 	<div class="mt-7 flex items-start justify-between px-5">
 		<div>
-			<p class="text-[13px] text-white/50">Active subscriptions</p>
-			<p class="mt-1 text-[19px] font-medium text-white">$45 upcomming</p>
+			<p class="text-[13px] text-white/50">Total invested</p>
+			<p class="mt-1 text-[19px] font-medium text-white">GHS 8,750</p>
 		</div>
 		<span class="mt-3 flex size-[34px] shrink-0 items-center justify-center rounded-full bg-[#1C1D1F]">
 			<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" class="size-[13px]">
@@ -35,7 +34,7 @@ const subs = [
 
 	<div class="mt-4 px-5">
 		{
-			subs.map((s, i) => (
+			holdings.map((s, i) => (
 				<div
 					class:list={[
 						'flex items-center justify-between py-[13px]',
