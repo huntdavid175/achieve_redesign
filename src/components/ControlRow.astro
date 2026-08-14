@@ -21,7 +21,7 @@ const { title, body, cta, gradient, reverse = false } = Astro.props;
 		<div
 			class:list={['relative aspect-square overflow-hidden rounded-[32px]', gradient]}
 		>
-			<div class="absolute top-[15%] left-[19.5%] w-[60%]">
+			<div data-parallax="40" class="absolute top-[15%] left-[19.5%] w-[60%]">
 				<slot />
 			</div>
 		</div>

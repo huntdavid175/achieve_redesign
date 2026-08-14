@@ -1,0 +1,80 @@
+---
+/*
+  GSAP scroll choreography.
+
+  Deliberately narrow in scope: this handles only the scrubbed, scroll-linked
+  motion that CSS cannot express. The section reveals stay on the CSS +
+  IntersectionObserver path — moving them here would trade ~900 bytes for ~35KB
+  to do the same job.
+
+  Nothing here touches an element that already carries a CSS reveal or a CSS
+  animation; a CSS animation would win over GSAP's inline transform and the two
+  would fight.
+*/
+---
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// matchMedia gives us automatic teardown, and skips everything when the
+	// visitor has asked for reduced motion.
+	const mm = gsap.matchMedia();
+
+	mm.add('(prefers-reduced-motion: no-preference)', () => {
+		/* ---- device parallax -------------------------------------------------
+		   Each device drifts against the page as its section passes through the
+		   viewport. data-parallax is the travel in px, so the effect stays
+		   predictable regardless of how tall the element is. */
+		gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
+			const travel = Number(el.dataset.parallax) || 60;
+			gsap.fromTo(
+				el,
+				{ y: travel },
+				{
+					y: -travel,
+					ease: 'none',
+					scrollTrigger: {
+						trigger: el.closest('section') ?? el,
+						start: 'top bottom',
+						end: 'bottom top',
+						scrub: 0.6,
+					},
+				}
+			);
+		});
+
+		/* ---- Connect: icons orbit the ring -----------------------------------
+		   The wrapper rotates and every icon counter-rotates by the same amount,
+		   so they travel around the circle without tipping over. */
+		const orbit = document.querySelector<HTMLElement>('[data-orbit]');
+		if (orbit) {
+			const SWEEP = 52; // degrees travelled across the section
+			const trigger = {
+				trigger: orbit.closest('section') ?? orbit,
+				start: 'top bottom',
+				end: 'bottom top',
+				scrub: 0.8,
+			};
+			gsap.fromTo(
+				orbit,
+				{ rotate: -SWEEP / 2 },
+				{ rotate: SWEEP / 2, ease: 'none', scrollTrigger: trigger }
+			);
+			gsap.fromTo(
+				'[data-orbit-item]',
+				{ rotate: SWEEP / 2 },
+				{ rotate: -SWEEP / 2, ease: 'none', scrollTrigger: trigger }
+			);
+		}
+
+		return () => {
+			// matchMedia reverts inline styles for us on cleanup
+		};
+	});
+
+	// Late-loading images change layout height; recalculate so triggers stay honest.
+	window.addEventListener('load', () => ScrollTrigger.refresh());
+</script>
